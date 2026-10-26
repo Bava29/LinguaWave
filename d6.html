@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="LinguaWave client workspace for managing interpretation equipment and event services.">
+    <title>LinguaWave</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="js/dashboard.js" defer></script>
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar" aria-label="Workspace sidebar">
+            <a class="brand" href="index.html" aria-label="LinguaWave dashboard"><img src="images/logo.png"
+                    alt="LinguaWave"></a>
+            <button class="sidebar-close" id="sidebarClose" type="button" aria-label="Close navigation"><i
+                    class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+            <div class="workspace-label">Workspace</div>
+            <nav class="side-nav" aria-label="Dashboard navigation">
+                <a class="nav-link" href="dashboard.html" data-page="Dashboard Overview"><i
+                        class="fa-solid fa-pie-chart" aria-hidden="true"></i><span>Dashboard Overview</span></a>
+                <a class="nav-link" href="d2.html" data-page="Event Bookings"><i class="fa-regular fa-calendar-check"
+                        aria-hidden="true"></i><span>Event Bookings</span></a>
+                <a class="nav-link" href="d3.html" data-page="Equipment & Language Channels"><i
+                        class="fa-solid fa-headphones" aria-hidden="true"></i><span>Equipment & Channels</span></a>
+                <a class="nav-link" href="d4.html" data-page="Delivery & Setup Schedule"><i
+                        class="fa-solid fa-truck-fast" aria-hidden="true"></i><span>Delivery &amp; Schedule</span></a>
+                <a class="nav-link" href="d5.html" data-page="Payments & Invoices"><i class="fa-regular fa-credit-card"
+                        aria-hidden="true"></i><span>Payments</span></a>
+                <a class="nav-link active" href="d6.html" data-page="Support & Service Requests"><i
+                        class="fa-regular fa-life-ring" aria-hidden="true"></i><span>Support</span></a>
+            </nav>
+            <div class="sidebar-bottom">
+
+                <button class="logout-button" type="button" data-logout><i class="fa-solid fa-arrow-right-from-bracket"
+                        aria-hidden="true"></i><span>Logout</span></button>
+            </div>
+        </aside>
+        <div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+        <main class="main-area">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation"
+                        aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button>
+                    <div class="page-heading"><span class="eyebrow">Client workspace</span>
+                        <h1 id="pageTitle">Support</h1>
+                    </div>
+                </div>
+                <div class="topbar-actions">
+                    <div class="popover-wrap" id="notificationsWrap">
+                        <button class="icon-button notification-button" id="notificationToggle" type="button"
+                            aria-label="Notifications, 3 unread" aria-expanded="false"
+                            aria-controls="notificationPanel"><i class="fa-solid fa-bell" aria-hidden="true"></i><span
+                                class="notification-badge">3</span></button>
+                        <section class="popover notification-panel" id="notificationPanel" aria-label="Notifications"
+                            hidden>
+                            <div class="popover-heading">
+                                <div><strong>Notifications</strong><span>3 updates for your workspace</span></div><span
+                                    class="live-label">DEMO</span>
+                            </div>
+                            <a class="notification-item" href="d2.html" data-page="Event Bookings"><span
+                                    class="notice-icon lilac"><i class="fa-regular fa-calendar-check"
+                                        aria-hidden="true"></i></span><span><strong>Upcoming event
+                                        booking</strong><small>Your Geneva Summit is coming up in 5 days.</small><em>2
+                                        hours ago</em></span></a>
+                            <a class="notification-item" href="d4.html" data-page="Delivery & Setup Schedule"><span
+                                    class="notice-icon plum"><i class="fa-solid fa-truck-fast"
+                                        aria-hidden="true"></i></span><span><strong>Delivery &amp; setup
+                                        scheduled</strong><small>Equipment arrival is confirmed for 14
+                                        June.</small><em>Yesterday</em></span></a>
+                            <a class="notification-item" href="d5.html" data-page="Payments & Invoices"><span
+                                    class="notice-icon lilac"><i class="fa-regular fa-file-lines"
+                                        aria-hidden="true"></i></span><span><strong>Invoice
+                                        reminder</strong><small>Invoice LW-2048 is ready for your review.</small><em>2
+                                        days ago</em></span></a>
+                            <div class="demo-note">Sample notifications for this frontend prototype.</div>
+                        </section>
+                    </div>
+                    <button class="icon-button" id="themeToggle" type="button" aria-label="Switch to dark mode"
+                        title="Switch to dark mode"><i class="fa-solid fa-moon" aria-hidden="true"></i></button>
+                    <button class="icon-button direction-button" id="directionToggle" type="button"
+                        aria-label="Switch to right-to-left layout" title="Switch text direction"><i
+                            class="fa-solid fa-arrow-right-arrow-left" aria-hidden="true"></i></button>
+                    <div class="popover-wrap profile-wrap" id="profileWrap">
+                        <button class="profile-button" id="profileToggle" type="button" aria-expanded="false"
+                            aria-controls="profilePanel"><img class="avatar avatar-image" alt="Demo client avatar"
+                                src="images/client-profile.jpg"><span class="profile-copy"><strong>Rakesh
+                                    M</strong><small>Event Client</small></span></button>
+                        <section class="popover profile-panel" id="profilePanel" aria-label="Client account menu"
+                            hidden>
+                            <div class="profile-menu-heading"><img class="avatar avatar-image" alt=""
+                                    src="images/client-profile.jpg"><span><strong>Demo Client</strong><small>Event
+                                        Client - Demo account</small></span></div>
+
+                        </section>
+                    </div>
+                </div>
+            </header>
+
+
+            <div class="content-scroll support-page" id="contentScroll">
+
+                <!-- SECTION 1: SUPPORT OVERVIEW -->
+                <section class="support-welcome">
+                    <div>
+                        <span class="support-eyebrow">CLIENT CARE CENTRE</span>
+                        <h1>Support & Service Requests</h1>
+                        <p>Raise a request, track its progress, and get help with your interpretation equipment and
+                            event services.</p>
+                    </div>
+                    <button type="button" class="support-primary-btn" id="newSupportRequestBtn">
+                        <i class="fa-solid fa-plus"></i>
+                        New Request
+                    </button>
+                </section>
+
+                <section class="support-section">
+                    <div class="support-section-heading">
+                        <div>
+                            <span class="support-step">01 / OVERVIEW</span>
+                            <h2>Your Support Overview</h2>
+                            <p>See the current status of your service requests.</p>
+                        </div>
+                        <span class="support-demo-label">
+                            <i class="fa-regular fa-clock"></i>
+                            Sample records
+                        </span>
+                    </div>
+
+                    <div class="support-stats">
+                        <article class="support-stat-card">
+                            <span class="support-stat-icon">
+                                <i class="fa-solid fa-ticket"></i>
+                            </span>
+                            <p>Open Requests</p>
+                            <h3 id="supportOpenCount">02</h3>
+                            <span class="support-stat-foot">Awaiting resolution</span>
+                        </article>
+
+                        <article class="support-stat-card">
+                            <span class="support-stat-icon">
+                                <i class="fa-solid fa-spinner"></i>
+                            </span>
+                            <p>In Progress</p>
+                            <h3 id="supportProgressCount">01</h3>
+                            <span class="support-stat-foot">Being reviewed by support</span>
+                        </article>
+
+                        <article class="support-stat-card">
+                            <span class="support-stat-icon">
+                                <i class="fa-solid fa-circle-check"></i>
+                            </span>
+                            <p>Resolved</p>
+                            <h3 id="supportResolvedCount">02</h3>
+                            <span class="support-stat-foot">Completed requests</span>
+                        </article>
+                    </div>
+
+                    <div class="support-latest-card">
+                        <div class="support-latest-icon">
+                            <i class="fa-solid fa-headset"></i>
+                        </div>
+                        <div class="support-latest-info">
+                            <span class="support-latest-label">LATEST REQUEST UPDATE</span>
+                            <h3>Equipment delivery confirmation</h3>
+                            <p>Request <strong>LW-2026-1042</strong> · Geneva Global Summit</p>
+                            <span class="support-latest-message">
+                                <i class="fa-solid fa-circle-info"></i>
+                                Sample update: delivery details are being reviewed.
+                            </span>
+                        </div>
+                        <span class="support-status support-status-progress">In Progress</span>
+                    </div>
+
+                    <div class="support-demo-note">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <p>Request counts and ticket updates are sample data. They will reflect real requests after
+                            backend integration.</p>
+                    </div>
+                </section>
+
+                <!-- SECTION 2: SERVICE REQUESTS -->
+                <section class="support-section">
+                    <div class="support-section-heading">
+                        <div>
+                            <span class="support-step">02 / REQUEST TRACKING</span>
+                            <h2>My Service Requests</h2>
+                            <p>Search existing requests and check their latest status.</p>
+                        </div>
+                    </div>
+
+                    <div class="support-toolbar">
+                        <label class="support-search">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="search" id="supportSearch" placeholder="Search request ID, event, or issue..."
+                                aria-label="Search service requests">
+                        </label>
+
+                        <select id="supportStatusFilter" aria-label="Filter requests by status">
+                            <option value="all">All statuses</option>
+                            <option value="open">Open</option>
+                            <option value="progress">In Progress</option>
+                            <option value="resolved">Resolved</option>
+                        </select>
+                    </div>
+
+                    <div class="support-request-list" id="supportRequestList">
+
+                        <article class="support-request-card"
+                            data-search="lw-2026-1042 geneva global summit equipment delivery confirmation"
+                            data-status="progress">
+                            <div class="support-request-icon">
+                                <i class="fa-solid fa-truck-fast"></i>
+                            </div>
+                            <div class="support-request-info">
+                                <div class="support-request-title-row">
+                                    <h3>Equipment delivery confirmation</h3>
+                                    <span class="support-status support-status-progress">In Progress</span>
+                                </div>
+                                <p class="support-request-meta">
+                                    <strong>LW-2026-1042</strong>
+                                    <span>•</span>
+                                    Geneva Global Summit
+                                </p>
+                                <div class="support-request-bottom">
+                                    <span><i class="fa-regular fa-calendar"></i> 20 Oct 2026</span>
+                                    <span class="support-priority priority-normal">Normal priority</span>
+                                </div>
+                            </div>
+                            <button type="button" class="support-view-btn" data-support-view data-id="LW-2026-1042"
+                                data-title="Equipment delivery confirmation" data-event="Geneva Global Summit"
+                                data-category="Delivery & Schedule" data-priority="Normal" data-status="In Progress"
+                                data-date="20 October 2026"
+                                data-description="Please confirm the scheduled delivery time and venue handover details."
+                                data-response="Sample update: delivery details are being reviewed.">
+                                View <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </article>
+
+                        <article class="support-request-card"
+                            data-search="lw-2026-1038 european partner forum language channel change"
+                            data-status="open">
+                            <div class="support-request-icon">
+                                <i class="fa-solid fa-language"></i>
+                            </div>
+                            <div class="support-request-info">
+                                <div class="support-request-title-row">
+                                    <h3>Language channel change</h3>
+                                    <span class="support-status support-status-open">Open</span>
+                                </div>
+                                <p class="support-request-meta">
+                                    <strong>LW-2026-1038</strong>
+                                    <span>•</span>
+                                    European Partner Forum
+                                </p>
+                                <div class="support-request-bottom">
+                                    <span><i class="fa-regular fa-calendar"></i> 19 Oct 2026</span>
+                                    <span class="support-priority priority-high">High priority</span>
+                                </div>
+                            </div>
+                            <button type="button" class="support-view-btn" data-support-view data-id="LW-2026-1038"
+                                data-title="Language channel change" data-event="European Partner Forum"
+                                data-category="Language Channels" data-priority="High" data-status="Open"
+                                data-date="19 October 2026"
+                                data-description="Please review a requested change to the event language channel requirements."
+                                data-response="Sample status: waiting for support team review.">
+                                View <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </article>
+
+                        <article class="support-request-card"
+                            data-search="lw-2026-1027 geneva global summit receiver equipment issue"
+                            data-status="resolved">
+                            <div class="support-request-icon">
+                                <i class="fa-solid fa-headphones"></i>
+                            </div>
+                            <div class="support-request-info">
+                                <div class="support-request-title-row">
+                                    <h3>Receiver equipment enquiry</h3>
+                                    <span class="support-status support-status-resolved">Resolved</span>
+                                </div>
+                                <p class="support-request-meta">
+                                    <strong>LW-2026-1027</strong>
+                                    <span>•</span>
+                                    Geneva Global Summit
+                                </p>
+                                <div class="support-request-bottom">
+                                    <span><i class="fa-regular fa-calendar"></i> 15 Oct 2026</span>
+                                    <span class="support-priority priority-normal">Normal priority</span>
+                                </div>
+                            </div>
+                            <button type="button" class="support-view-btn" data-support-view data-id="LW-2026-1027"
+                                data-title="Receiver equipment enquiry" data-event="Geneva Global Summit"
+                                data-category="Equipment" data-priority="Normal" data-status="Resolved"
+                                data-date="15 October 2026"
+                                data-description="Requested clarification about receiver equipment requirements."
+                                data-response="Sample update: the request has been marked as resolved.">
+                                View <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </article>
+
+                        <article class="support-request-card"
+                            data-search="lw-2026-1019 invoice payment european partner forum" data-status="resolved">
+                            <div class="support-request-icon">
+                                <i class="fa-solid fa-file-invoice-dollar"></i>
+                            </div>
+                            <div class="support-request-info">
+                                <div class="support-request-title-row">
+                                    <h3>Invoice clarification</h3>
+                                    <span class="support-status support-status-resolved">Resolved</span>
+                                </div>
+                                <p class="support-request-meta">
+                                    <strong>LW-2026-1019</strong>
+                                    <span>•</span>
+                                    European Partner Forum
+                                </p>
+                                <div class="support-request-bottom">
+                                    <span><i class="fa-regular fa-calendar"></i> 12 Oct 2026</span>
+                                    <span class="support-priority priority-normal">Normal priority</span>
+                                </div>
+                            </div>
+                            <button type="button" class="support-view-btn" data-support-view data-id="LW-2026-1019"
+                                data-title="Invoice clarification" data-event="European Partner Forum"
+                                data-category="Payments & Invoices" data-priority="Normal" data-status="Resolved"
+                                data-date="12 October 2026"
+                                data-description="Requested clarification about the invoice amount and billing record."
+                                data-response="Sample update: the invoice enquiry has been resolved.">
+                                View <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </article>
+
+                    </div>
+
+                    <div class="support-empty" id="supportEmpty" hidden>
+                        <i class="fa-solid fa-ticket"></i>
+                        <h3>No matching requests</h3>
+                        <p>Try a different request ID, event name, or status.</p>
+                    </div>
+                </section>
+
+                <!-- SECTION 3: CREATE A REQUEST -->
+                <section class="support-section" id="createSupportSection">
+                    <div class="support-section-heading">
+                        <div>
+                            <span class="support-step">03 / GET ASSISTANCE</span>
+                            <h2>Create a Service Request</h2>
+                            <p>Tell us what you need help with so your request can be directed to the right team.</p>
+                        </div>
+                    </div>
+
+                    <form class="support-form" id="supportRequestForm">
+                        <div class="support-form-grid">
+
+                            <div class="support-field">
+                                <label for="supportRequestSubject">Request subject <span>*</span></label>
+                                <input type="text" id="supportRequestSubject" name="subject"
+                                    placeholder="Briefly describe your issue" maxlength="100" required>
+                            </div>
+
+                            <div class="support-field">
+                                <label for="supportRequestCategory">Request category <span>*</span></label>
+                                <select id="supportRequestCategory" name="category" required>
+                                    <option value="">Select a category</option>
+                                    <option value="Equipment">Equipment issue</option>
+                                    <option value="Language Channels">Language channel change</option>
+                                    <option value="Delivery & Schedule">Delivery or schedule</option>
+                                    <option value="Payments & Invoices">Invoice or payment</option>
+                                    <option value="Booking">Booking changes</option>
+                                    <option value="Other">Other support</option>
+                                </select>
+                            </div>
+
+                            <div class="support-field">
+                                <label for="supportRequestEvent">Related event</label>
+                                <select id="supportRequestEvent" name="event">
+                                    <option value="">Select an event (optional)</option>
+                                    <option>Geneva Global Summit</option>
+                                    <option>European Partner Forum</option>
+                                    <option>Global Technology Symposium</option>
+                                    <option>International Leadership Congress</option>
+                                    <option>Not related to an event</option>
+                                </select>
+                            </div>
+
+                            <div class="support-field">
+                                <label for="supportRequestPriority">Priority <span>*</span></label>
+                                <select id="supportRequestPriority" name="priority" required>
+                                    <option value="Normal">Normal</option>
+                                    <option value="High">High</option>
+                                    <option value="Urgent">Urgent</option>
+                                </select>
+                                <small>Select Urgent only if the issue needs immediate attention.</small>
+                            </div>
+
+                            <div class="support-field support-field-full">
+                                <label for="supportRequestDescription">Describe your request <span>*</span></label>
+                                <textarea id="supportRequestDescription" name="description" rows="5" minlength="10"
+                                    maxlength="1500"
+                                    placeholder="Include relevant details, dates, quantities, or error messages..."
+                                    required></textarea>
+                                <small>Do not include passwords or payment card details.</small>
+                            </div>
+                        </div>
+
+                        <div class="support-form-footer">
+                            <p><i class="fa-solid fa-shield-halved"></i> Review your details before submitting.</p>
+                            <button type="submit" class="support-primary-btn">
+                                <i class="fa-solid fa-paper-plane"></i>
+                                Submit Request
+                            </button>
+                        </div>
+
+                        <div class="support-form-feedback" id="supportFormFeedback" role="status" aria-live="polite"
+                            hidden></div>
+                    </form>
+                </section>
+
+            </div>
+
+            <!-- REQUEST DETAILS MODAL -->
+            <div class="support-modal" id="supportDetailsModal" aria-hidden="true">
+                <div class="support-modal-backdrop" data-support-close></div>
+                <div class="support-modal-panel" role="dialog" aria-modal="true" aria-labelledby="supportModalTitle">
+                    <button type="button" class="support-modal-close" data-support-close
+                        aria-label="Close request details">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+
+                    <span class="support-modal-icon">
+                        <i class="fa-solid fa-headset"></i>
+                    </span>
+                    <span class="support-step">SERVICE REQUEST DETAILS</span>
+                    <h2 id="supportModalTitle">Request details</h2>
+                    <p class="support-modal-subtitle">Review the recorded information for this request.</p>
+
+                    <div class="support-modal-data">
+                        <div><span>Request ID</span><strong id="supportModalId">—</strong></div>
+                        <div><span>Subject</span><strong id="supportModalSubject">—</strong></div>
+                        <div><span>Related event</span><strong id="supportModalEvent">—</strong></div>
+                        <div><span>Category</span><strong id="supportModalCategory">—</strong></div>
+                        <div><span>Priority</span><strong id="supportModalPriority">—</strong></div>
+                        <div><span>Status</span><strong id="supportModalStatus">—</strong></div>
+                        <div><span>Submitted</span><strong id="supportModalDate">—</strong></div>
+                        <div class="support-modal-description">
+                            <span>Description</span>
+                            <strong id="supportModalDescription">—</strong>
+                        </div>
+                        <div class="support-modal-description">
+                            <span>Latest update</span>
+                            <strong id="supportModalResponse">—</strong>
+                        </div>
+                    </div>
+
+                    <a href="d6.html" class="support-primary-btn support-modal-contact">
+                        <i class="fa-regular fa-message"></i>
+                        Contact Support
+                    </a>
+                </div>
+            </div>
+
+        </main>
+    </div>
+    <div class="modal-backdrop" id="logoutModal" hidden>
+        <section class="confirm-dialog" role="dialog" aria-modal="true" aria-labelledby="logoutTitle"
+            aria-describedby="logoutDescription" tabindex="-1">
+            <span class="logout-icon-wrap"><i class="fa-solid fa-arrow-right-from-bracket"
+                    aria-hidden="true"></i></span>
+            <h2 id="logoutTitle">Confirm Logout</h2>
+            <p id="logoutDescription">Are you sure you want to log out of your LinguaWave account?</p>
+            <div class="dialog-actions"><button class="secondary-button" id="stayButton" type="button">No,
+                    Stay</button><button class="confirm-logout-button" id="confirmLogoutButton" type="button"><i
+                        class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i> Yes, Logout</button></div>
+        </section>
+    </div>
+</body>
+
+</html>

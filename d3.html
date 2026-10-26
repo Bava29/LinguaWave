@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="LinguaWave client workspace for managing interpretation equipment and event services.">
+    <title>LinguaWave</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="js/dashboard.js" defer></script>
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar" aria-label="Workspace sidebar">
+            <a class="brand" href="index.html" aria-label="LinguaWave dashboard"><img src="images/logo.png"
+                    alt="LinguaWave"></a>
+            <button class="sidebar-close" id="sidebarClose" type="button" aria-label="Close navigation"><i
+                    class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+            <div class="workspace-label">Workspace</div>
+            <nav class="side-nav" aria-label="Dashboard navigation">
+                <a class="nav-link" href="dashboard.html" data-page="Dashboard Overview"><i
+                        class="fa-solid fa-pie-chart" aria-hidden="true"></i><span>Dashboard Overview</span></a>
+                <a class="nav-link" href="d2.html" data-page="Event Bookings"><i class="fa-regular fa-calendar-check"
+                        aria-hidden="true"></i><span>Event Bookings</span></a>
+                <a class="nav-link active" href="d3.html" data-page="Equipment & Language Channels"><i
+                        class="fa-solid fa-headphones" aria-hidden="true"></i><span>Equipment & Channels</span></a>
+                <a class="nav-link" href="d4.html" data-page="Delivery & Setup Schedule"><i
+                        class="fa-solid fa-truck-fast" aria-hidden="true"></i><span>Delivery &amp; Schedule</span></a>
+                <a class="nav-link" href="d5.html" data-page="Payments & Invoices"><i class="fa-regular fa-credit-card"
+                        aria-hidden="true"></i><span>Payments</span></a>
+                <a class="nav-link" href="d6.html" data-page="Support & Service Requests"><i
+                        class="fa-regular fa-life-ring" aria-hidden="true"></i><span>Support</span></a>
+            </nav>
+            <div class="sidebar-bottom">
+
+                <button class="logout-button" type="button" data-logout><i class="fa-solid fa-arrow-right-from-bracket"
+                        aria-hidden="true"></i><span>Logout</span></button>
+            </div>
+        </aside>
+        <div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+        <main class="main-area">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation"
+                        aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button>
+                    <div class="page-heading"><span class="eyebrow">Client workspace</span>
+                        <h1 id="pageTitle">Equipment & Channels</h1>
+                    </div>
+                </div>
+                <div class="topbar-actions">
+                    <div class="popover-wrap" id="notificationsWrap">
+                        <button class="icon-button notification-button" id="notificationToggle" type="button"
+                            aria-label="Notifications, 3 unread" aria-expanded="false"
+                            aria-controls="notificationPanel"><i class="fa-solid fa-bell" aria-hidden="true"></i><span
+                                class="notification-badge">3</span></button>
+                        <section class="popover notification-panel" id="notificationPanel" aria-label="Notifications"
+                            hidden>
+                            <div class="popover-heading">
+                                <div><strong>Notifications</strong><span>3 updates for your workspace</span></div><span
+                                    class="live-label">DEMO</span>
+                            </div>
+                            <a class="notification-item" href="d2.html" data-page="Event Bookings"><span
+                                    class="notice-icon lilac"><i class="fa-regular fa-calendar-check"
+                                        aria-hidden="true"></i></span><span><strong>Upcoming event
+                                        booking</strong><small>Your Geneva Summit is coming up in 5 days.</small><em>2
+                                        hours ago</em></span></a>
+                            <a class="notification-item" href="d4.html" data-page="Delivery & Setup Schedule"><span
+                                    class="notice-icon plum"><i class="fa-solid fa-truck-fast"
+                                        aria-hidden="true"></i></span><span><strong>Delivery &amp; setup
+                                        scheduled</strong><small>Equipment arrival is confirmed for 14
+                                        June.</small><em>Yesterday</em></span></a>
+                            <a class="notification-item" href="d5.html" data-page="Payments & Invoices"><span
+                                    class="notice-icon lilac"><i class="fa-regular fa-file-lines"
+                                        aria-hidden="true"></i></span><span><strong>Invoice
+                                        reminder</strong><small>Invoice LW-2048 is ready for your review.</small><em>2
+                                        days ago</em></span></a>
+                            <div class="demo-note">Sample notifications for this frontend prototype.</div>
+                        </section>
+                    </div>
+                    <button class="icon-button" id="themeToggle" type="button" aria-label="Switch to dark mode"
+                        title="Switch to dark mode"><i class="fa-solid fa-moon" aria-hidden="true"></i></button>
+                    <button class="icon-button direction-button" id="directionToggle" type="button"
+                        aria-label="Switch to right-to-left layout" title="Switch text direction"><i
+                            class="fa-solid fa-arrow-right-arrow-left" aria-hidden="true"></i></button>
+                    <div class="popover-wrap profile-wrap" id="profileWrap">
+                        <button class="profile-button" id="profileToggle" type="button" aria-expanded="false"
+                            aria-controls="profilePanel"><img class="avatar avatar-image" alt="Demo client avatar"
+                                src="images/client-profile.jpg"><span class="profile-copy"><strong>Rakesh
+                                    M</strong><small>Event Client</small></span></button>
+                        <section class="popover profile-panel" id="profilePanel" aria-label="Client account menu"
+                            hidden>
+                            <div class="profile-menu-heading"><img class="avatar avatar-image" alt=""
+                                    src="images/client-profile.jpg"><span><strong>Demo Client</strong><small>Event
+                                        Client - Demo account</small></span></div>
+
+                        </section>
+                    </div>
+                </div>
+            </header>
+
+
+            <div class="content-scroll equipment-page" id="contentScroll">
+
+                <!-- SECTION 1: EQUIPMENT OVERVIEW -->
+                <section class="equipment-welcome">
+                    <div>
+                        <span class="equipment-eyebrow">RESOURCE MANAGEMENT</span>
+                        <h1>Equipment & Language Channels</h1>
+                        <p>Monitor your interpretation equipment and manage language channel requirements for upcoming
+                            events.</p>
+                    </div>
+                    <a href="d2.html" class="equipment-primary-btn">
+                        <i class="fa-solid fa-calendar-check"></i>
+                        View Bookings
+                    </a>
+                </section>
+
+                <section class="equipment-section">
+                    <div class="equipment-section-heading">
+                        <div>
+                            <span class="equipment-step">01 / INVENTORY</span>
+                            <h2>Equipment Overview</h2>
+                            <p>A quick view of your current equipment availability.</p>
+                        </div>
+                        <span class="equipment-live-label">
+                            <span class="equipment-live-dot"></span>
+                            Inventory snapshot
+                        </span>
+                    </div>
+
+                    <div class="equipment-stats">
+                        <article class="equipment-stat-card">
+                            <div class="equipment-stat-top">
+                                <span class="equipment-stat-icon">
+                                    <i class="fa-solid fa-headphones"></i>
+                                </span>
+                                <span class="equipment-stat-caption">TOTAL STOCK</span>
+                            </div>
+                            <h3>480</h3>
+                            <p>Interpretation receivers</p>
+                            <div class="equipment-stat-foot">Across all equipment types</div>
+                        </article>
+
+                        <article class="equipment-stat-card">
+                            <div class="equipment-stat-top">
+                                <span class="equipment-stat-icon">
+                                    <i class="fa-solid fa-boxes-stacked"></i>
+                                </span>
+                                <span class="equipment-stat-caption">AVAILABLE</span>
+                            </div>
+                            <h3>180</h3>
+                            <p>Ready for allocation</p>
+                            <div class="equipment-stat-foot equipment-positive">
+                                <i class="fa-solid fa-circle-check"></i> Available for booking
+                            </div>
+                        </article>
+
+                        <article class="equipment-stat-card">
+                            <div class="equipment-stat-top">
+                                <span class="equipment-stat-icon">
+                                    <i class="fa-solid fa-calendar-check"></i>
+                                </span>
+                                <span class="equipment-stat-caption">ALLOCATED</span>
+                            </div>
+                            <h3>270</h3>
+                            <p>Reserved for events</p>
+                            <div class="equipment-stat-foot">Across upcoming bookings</div>
+                        </article>
+
+                        <article class="equipment-stat-card">
+                            <div class="equipment-stat-top">
+                                <span class="equipment-stat-icon">
+                                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                                </span>
+                                <span class="equipment-stat-caption">MAINTENANCE</span>
+                            </div>
+                            <h3>30</h3>
+                            <p>Temporarily unavailable</p>
+                            <div class="equipment-stat-foot">Excluded from availability</div>
+                        </article>
+                    </div>
+
+                    <div class="equipment-note">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <p>These figures are sample inventory values. Replace them with your actual equipment records
+                            before using this dashboard operationally.</p>
+                    </div>
+                </section>
+
+                <!-- SECTION 2: LANGUAGE CHANNELS -->
+                <section class="equipment-section">
+                    <div class="equipment-section-heading">
+                        <div>
+                            <span class="equipment-step">02 / LANGUAGES</span>
+                            <h2>Language Channels</h2>
+                            <p>Review the interpretation languages and receiver requirements for each event.</p>
+                        </div>
+                    </div>
+
+                    <div class="channel-toolbar">
+                        <div class="channel-search">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="search" id="channelSearch" placeholder="Search event or language..."
+                                aria-label="Search events or languages">
+                        </div>
+
+                        <select id="channelStatusFilter" aria-label="Filter by channel status">
+                            <option value="all">All statuses</option>
+                            <option value="confirmed">Confirmed</option>
+                            <option value="pending">Pending review</option>
+                        </select>
+                    </div>
+
+                    <div class="channel-list" id="channelList">
+
+                        <article class="channel-card" data-search="geneva global summit english french german"
+                            data-status="confirmed">
+                            <div class="channel-card-top">
+                                <div class="channel-event-icon">
+                                    <i class="fa-solid fa-earth-europe"></i>
+                                </div>
+                                <div class="channel-event-info">
+                                    <h3>Geneva Global Summit</h3>
+                                    <p><i class="fa-regular fa-calendar"></i> 8 Nov 2026 <span>•</span> Geneva</p>
+                                </div>
+                                <span class="channel-status confirmed">Confirmed</span>
+                            </div>
+
+                            <div class="channel-card-details">
+                                <div>
+                                    <span class="channel-detail-label">LANGUAGE CHANNELS</span>
+                                    <div class="channel-language-tags">
+                                        <span>EN <b>English</b></span>
+                                        <span>FR <b>French</b></span>
+                                        <span>DE <b>German</b></span>
+                                    </div>
+                                </div>
+                                <div class="channel-receiver-count">
+                                    <span class="channel-detail-label">RECEIVERS</span>
+                                    <strong>120</strong>
+                                    <small>Requested units</small>
+                                </div>
+                            </div>
+
+                            <div class="channel-card-footer">
+                                <span><i class="fa-solid fa-circle-check"></i> Requirements confirmed</span>
+                                <button type="button" class="channel-edit-btn" data-event="Geneva Global Summit"
+                                    data-languages="English, French, German" data-receivers="120"
+                                    data-status="Confirmed">
+                                    View details <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </button>
+                            </div>
+                        </article>
+
+                        <article class="channel-card" data-search="european partner forum english french"
+                            data-status="confirmed">
+                            <div class="channel-card-top">
+                                <div class="channel-event-icon">
+                                    <i class="fa-solid fa-handshake"></i>
+                                </div>
+                                <div class="channel-event-info">
+                                    <h3>European Partner Forum</h3>
+                                    <p><i class="fa-regular fa-calendar"></i> 18 Nov 2026 <span>•</span> Paris</p>
+                                </div>
+                                <span class="channel-status confirmed">Confirmed</span>
+                            </div>
+
+                            <div class="channel-card-details">
+                                <div>
+                                    <span class="channel-detail-label">LANGUAGE CHANNELS</span>
+                                    <div class="channel-language-tags">
+                                        <span>EN <b>English</b></span>
+                                        <span>FR <b>French</b></span>
+                                    </div>
+                                </div>
+                                <div class="channel-receiver-count">
+                                    <span class="channel-detail-label">RECEIVERS</span>
+                                    <strong>60</strong>
+                                    <small>Requested units</small>
+                                </div>
+                            </div>
+
+                            <div class="channel-card-footer">
+                                <span><i class="fa-solid fa-circle-check"></i> Requirements confirmed</span>
+                                <button type="button" class="channel-edit-btn" data-event="European Partner Forum"
+                                    data-languages="English, French" data-receivers="60" data-status="Confirmed">
+                                    View details <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </button>
+                            </div>
+                        </article>
+
+                        <article class="channel-card"
+                            data-search="global technology symposium english french german spanish"
+                            data-status="pending">
+                            <div class="channel-card-top">
+                                <div class="channel-event-icon">
+                                    <i class="fa-solid fa-microchip"></i>
+                                </div>
+                                <div class="channel-event-info">
+                                    <h3>Global Technology Symposium</h3>
+                                    <p><i class="fa-regular fa-calendar"></i> 5 Dec 2026 <span>•</span> London</p>
+                                </div>
+                                <span class="channel-status pending">Pending review</span>
+                            </div>
+
+                            <div class="channel-card-details">
+                                <div>
+                                    <span class="channel-detail-label">REQUESTED CHANNELS</span>
+                                    <div class="channel-language-tags">
+                                        <span>EN <b>English</b></span>
+                                        <span>FR <b>French</b></span>
+                                        <span>DE <b>German</b></span>
+                                        <span>ES <b>Spanish</b></span>
+                                    </div>
+                                </div>
+                                <div class="channel-receiver-count">
+                                    <span class="channel-detail-label">RECEIVERS</span>
+                                    <strong>200</strong>
+                                    <small>Requested units</small>
+                                </div>
+                            </div>
+
+                            <div class="channel-card-footer">
+                                <span><i class="fa-solid fa-clock"></i> Awaiting confirmation</span>
+                                <button type="button" class="channel-edit-btn" data-event="Global Technology Symposium"
+                                    data-languages="English, French, German, Spanish" data-receivers="200"
+                                    data-status="Pending review">
+                                    View details <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </button>
+                            </div>
+                        </article>
+
+                    </div>
+
+                    <div class="channel-empty" id="channelEmpty" hidden>
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <h3>No matching channels</h3>
+                        <p>Try another event name, language, or status.</p>
+                    </div>
+                </section>
+
+                <!-- SECTION 3: EQUIPMENT ALLOCATION -->
+                <section class="equipment-section">
+                    <div class="equipment-section-heading">
+                        <div>
+                            <span class="equipment-step">03 / ALLOCATION</span>
+                            <h2>Equipment Allocation</h2>
+                            <p>Check the equipment requested for your upcoming events.</p>
+                        </div>
+                        <a href="d6.html" class="equipment-outline-btn">
+                            <i class="fa-regular fa-message"></i>
+                            Contact Support
+                        </a>
+                    </div>
+
+                    <div class="allocation-table-wrap">
+                        <table class="allocation-table">
+                            <thead>
+                                <tr>
+                                    <th>Event</th>
+                                    <th>Equipment</th>
+                                    <th>Quantity</th>
+                                    <th>Allocation status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <strong>Geneva Global Summit</strong>
+                                        <span>8 Nov 2026</span>
+                                    </td>
+                                    <td>
+                                        <div class="allocation-equipment">
+                                            <i class="fa-solid fa-headphones"></i>
+                                            <span>Interpretation receivers</span>
+                                        </div>
+                                    </td>
+                                    <td><strong>120 units</strong></td>
+                                    <td><span class="allocation-status ready">Allocated</span></td>
+                                    <td><button class="allocation-action" type="button"
+                                            data-event="Geneva Global Summit" data-equipment="Interpretation receivers"
+                                            data-quantity="120" data-status="Allocated">Details</button></td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <strong>European Partner Forum</strong>
+                                        <span>18 Nov 2026</span>
+                                    </td>
+                                    <td>
+                                        <div class="allocation-equipment">
+                                            <i class="fa-solid fa-headphones"></i>
+                                            <span>Interpretation receivers</span>
+                                        </div>
+                                    </td>
+                                    <td><strong>60 units</strong></td>
+                                    <td><span class="allocation-status ready">Allocated</span></td>
+                                    <td><button class="allocation-action" type="button"
+                                            data-event="European Partner Forum"
+                                            data-equipment="Interpretation receivers" data-quantity="60"
+                                            data-status="Allocated">Details</button></td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <strong>Global Technology Symposium</strong>
+                                        <span>5 Dec 2026</span>
+                                    </td>
+                                    <td>
+                                        <div class="allocation-equipment">
+                                            <i class="fa-solid fa-headphones"></i>
+                                            <span>Interpretation receivers</span>
+                                        </div>
+                                    </td>
+                                    <td><strong>200 units</strong></td>
+                                    <td><span class="allocation-status review">Under review</span></td>
+                                    <td><button class="allocation-action" type="button"
+                                            data-event="Global Technology Symposium"
+                                            data-equipment="Interpretation receivers" data-quantity="200"
+                                            data-status="Under review">Details</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="allocation-help">
+                        <div class="allocation-help-icon">
+                            <i class="fa-solid fa-box-open"></i>
+                        </div>
+                        <div>
+                            <h3>Need additional equipment?</h3>
+                            <p>Contact the support team if your event needs more receivers or additional interpretation
+                                equipment.</p>
+                        </div>
+                        <a href="d6.html">Request assistance <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+
+        <!-- EQUIPMENT DETAILS MODAL -->
+        <div class="equipment-modal" id="equipmentDetailsModal" aria-hidden="true">
+            <div class="equipment-modal-backdrop" data-equipment-close></div>
+            <div class="equipment-modal-panel" role="dialog" aria-modal="true" aria-labelledby="equipmentModalTitle">
+                <button type="button" class="equipment-modal-close" data-equipment-close aria-label="Close details">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <span class="equipment-modal-icon">
+                    <i class="fa-solid fa-headphones-simple"></i>
+                </span>
+                <span class="equipment-step">EQUIPMENT DETAILS</span>
+                <h2 id="equipmentModalTitle">Event details</h2>
+                <p class="equipment-modal-description">Review the current equipment information for this event.</p>
+
+                <div class="equipment-modal-data">
+                    <div><span>Event</span><strong id="equipmentModalEvent">—</strong></div>
+                    <div><span>Languages</span><strong id="equipmentModalLanguages">—</strong></div>
+                    <div><span>Equipment</span><strong id="equipmentModalType">—</strong></div>
+                    <div><span>Quantity</span><strong id="equipmentModalQuantity">—</strong></div>
+                    <div><span>Status</span><strong id="equipmentModalStatus">—</strong></div>
+                </div>
+
+                <a href="d6.html" class="equipment-primary-btn equipment-modal-support">
+                    <i class="fa-regular fa-message"></i>
+                    Contact Support
+                </a>
+            </div>
+        </div>
+
+
+        </main>
+    </div>
+    <div class="modal-backdrop" id="logoutModal" hidden>
+        <section class="confirm-dialog" role="dialog" aria-modal="true" aria-labelledby="logoutTitle"
+            aria-describedby="logoutDescription" tabindex="-1">
+            <span class="logout-icon-wrap"><i class="fa-solid fa-arrow-right-from-bracket"
+                    aria-hidden="true"></i></span>
+            <h2 id="logoutTitle">Confirm Logout</h2>
+            <p id="logoutDescription">Are you sure you want to log out of your LinguaWave account?</p>
+            <div class="dialog-actions"><button class="secondary-button" id="stayButton" type="button">No,
+                    Stay</button><button class="confirm-logout-button" id="confirmLogoutButton" type="button"><i
+                        class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i> Yes, Logout</button></div>
+        </section>
+    </div>
+</body>
+
+</html>

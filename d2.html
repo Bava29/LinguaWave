@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="LinguaWave client workspace for managing interpretation equipment and event services.">
+    <title>LinguaWave</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="js/dashboard.js" defer></script>
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar" aria-label="Workspace sidebar">
+            <a class="brand" href="index.html" aria-label="LinguaWave dashboard"><img src="images/logo.png"
+                    alt="LinguaWave"></a>
+            <button class="sidebar-close" id="sidebarClose" type="button" aria-label="Close navigation"><i
+                    class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+            <div class="workspace-label">Workspace</div>
+            <nav class="side-nav" aria-label="Dashboard navigation">
+                <a class="nav-link" href="dashboard.html" data-page="Dashboard Overview"><i
+                        class="fa-solid fa-pie-chart" aria-hidden="true"></i><span>Dashboard Overview</span></a>
+                <a class="nav-link active" href="d2.html" data-page="Event Bookings"><i
+                        class="fa-regular fa-calendar-check" aria-hidden="true"></i><span>Event Bookings</span></a>
+                <a class="nav-link" href="d3.html" data-page="Equipment & Language Channels"><i
+                        class="fa-solid fa-headphones" aria-hidden="true"></i><span>Equipment & Channels</span></a>
+                <a class="nav-link" href="d4.html" data-page="Delivery & Setup Schedule"><i
+                        class="fa-solid fa-truck-fast" aria-hidden="true"></i><span>Delivery &amp; Schedule</span></a>
+                <a class="nav-link" href="d5.html" data-page="Payments & Invoices"><i class="fa-regular fa-credit-card"
+                        aria-hidden="true"></i><span>Payments</span></a>
+                <a class="nav-link" href="d6.html" data-page="Support & Service Requests"><i
+                        class="fa-regular fa-life-ring" aria-hidden="true"></i><span>Support</span></a>
+            </nav>
+            <div class="sidebar-bottom">
+
+                <button class="logout-button" type="button" data-logout><i class="fa-solid fa-arrow-right-from-bracket"
+                        aria-hidden="true"></i><span>Logout</span></button>
+            </div>
+        </aside>
+        <div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+        <main class="main-area">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation"
+                        aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button>
+                    <div class="page-heading"><span class="eyebrow">Client workspace</span>
+                        <h1 id="pageTitle">Bookings</h1>
+                    </div>
+                </div>
+                <div class="topbar-actions">
+                    <div class="popover-wrap" id="notificationsWrap">
+                        <button class="icon-button notification-button" id="notificationToggle" type="button"
+                            aria-label="Notifications, 3 unread" aria-expanded="false"
+                            aria-controls="notificationPanel"><i class="fa-solid fa-bell" aria-hidden="true"></i><span
+                                class="notification-badge">3</span></button>
+                        <section class="popover notification-panel" id="notificationPanel" aria-label="Notifications"
+                            hidden>
+                            <div class="popover-heading">
+                                <div><strong>Notifications</strong><span>3 updates for your workspace</span></div><span
+                                    class="live-label">DEMO</span>
+                            </div>
+                            <a class="notification-item" href="d2.html" data-page="Event Bookings"><span
+                                    class="notice-icon lilac"><i class="fa-regular fa-calendar-check"
+                                        aria-hidden="true"></i></span><span><strong>Upcoming event
+                                        booking</strong><small>Your Geneva Summit is coming up in 5 days.</small><em>2
+                                        hours ago</em></span></a>
+                            <a class="notification-item" href="d4.html" data-page="Delivery & Setup Schedule"><span
+                                    class="notice-icon plum"><i class="fa-solid fa-truck-fast"
+                                        aria-hidden="true"></i></span><span><strong>Delivery &amp; setup
+                                        scheduled</strong><small>Equipment arrival is confirmed for 14
+                                        June.</small><em>Yesterday</em></span></a>
+                            <a class="notification-item" href="d5.html" data-page="Payments & Invoices"><span
+                                    class="notice-icon lilac"><i class="fa-regular fa-file-lines"
+                                        aria-hidden="true"></i></span><span><strong>Invoice
+                                        reminder</strong><small>Invoice LW-2048 is ready for your review.</small><em>2
+                                        days ago</em></span></a>
+                            <div class="demo-note">Sample notifications for this frontend prototype.</div>
+                        </section>
+                    </div>
+                    <button class="icon-button" id="themeToggle" type="button" aria-label="Switch to dark mode"
+                        title="Switch to dark mode"><i class="fa-solid fa-moon" aria-hidden="true"></i></button>
+                    <button class="icon-button direction-button" id="directionToggle" type="button"
+                        aria-label="Switch to right-to-left layout" title="Switch text direction"><i
+                            class="fa-solid fa-arrow-right-arrow-left" aria-hidden="true"></i></button>
+                    <div class="popover-wrap profile-wrap" id="profileWrap">
+                        <button class="profile-button" id="profileToggle" type="button" aria-expanded="false"
+                            aria-controls="profilePanel"><img class="avatar avatar-image" alt="Demo client avatar"
+                                src="images/client-profile.jpg"><span class="profile-copy"><strong>Rakesh
+                                    M</strong><small>Event Client</small></span></button>
+                        <section class="popover profile-panel" id="profilePanel" aria-label="Client account menu"
+                            hidden>
+                            <div class="profile-menu-heading"><img class="avatar avatar-image" alt=""
+                                    src="images/client-profile.jpg"><span><strong>Demo Client</strong><small>Event
+                                        Client - Demo account</small></span></div>
+
+                        </section>
+                    </div>
+                </div>
+            </header>
+
+
+            <div class="content-scroll booking-page">
+
+                <!-- SECTION 1: Booking Summary -->
+                <section class="booking-welcome">
+                    <div>
+                        <span class="booking-kicker">
+                            <i class="fa-regular fa-calendar-check"></i>
+                            EVENT MANAGEMENT
+                        </span>
+                        <h2>My Bookings</h2>
+                        <p>Manage your conference bookings, review event arrangements and track confirmation status.</p>
+                    </div>
+
+                    <a href="booking-request.html" class="primary-button">
+                        <i class="fa-solid fa-plus"></i>
+                        New Booking
+                    </a>
+                </section>
+
+                <section class="booking-section" id="bookingSummary">
+                    <div class="booking-stats">
+
+                        <article class="booking-stat">
+                            <div class="booking-stat-icon">
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </div>
+                            <div>
+                                <span>Total Bookings</span>
+                                <strong>04</strong>
+                                <small>All event requests</small>
+                            </div>
+                        </article>
+
+                        <article class="booking-stat">
+                            <div class="booking-stat-icon">
+                                <i class="fa-solid fa-circle-check"></i>
+                            </div>
+                            <div>
+                                <span>Confirmed</span>
+                                <strong>02</strong>
+                                <small>Ready for coordination</small>
+                            </div>
+                        </article>
+
+                        <article class="booking-stat">
+                            <div class="booking-stat-icon">
+                                <i class="fa-regular fa-clock"></i>
+                            </div>
+                            <div>
+                                <span>Awaiting Confirmation</span>
+                                <strong>01</strong>
+                                <small>Request under review</small>
+                            </div>
+                        </article>
+
+                        <article class="booking-stat">
+                            <div class="booking-stat-icon">
+                                <i class="fa-solid fa-calendar-check"></i>
+                            </div>
+                            <div>
+                                <span>Upcoming</span>
+                                <strong>02</strong>
+                                <small>Future confirmed events</small>
+                            </div>
+                        </article>
+
+                    </div>
+
+                    <p class="booking-demo-note">
+                        <i class="fa-solid fa-circle-info"></i>
+                        Illustrative booking data for the frontend prototype.
+                    </p>
+                </section>
+
+                <!-- SECTION 2: My Bookings -->
+                <section class="booking-section" id="myBookings">
+
+                    <div class="booking-section-heading">
+                        <div>
+                            <span class="booking-kicker">YOUR EVENTS</span>
+                            <h2>All Bookings</h2>
+                            <p>Find your event details and check the latest booking status.</p>
+                        </div>
+
+                        <div class="booking-filters">
+                            <label class="booking-search">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="search" id="bookingSearch" placeholder="Search events..."
+                                    aria-label="Search bookings">
+                            </label>
+
+                            <select id="bookingStatusFilter" aria-label="Filter by booking status">
+                                <option value="all">All statuses</option>
+                                <option value="confirmed">Confirmed</option>
+                                <option value="pending">Pending</option>
+                                <option value="review">Under review</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="booking-list" id="bookingList">
+
+                        <article class="booking-item"
+                            data-search="geneva global summit geneva switzerland international conference"
+                            data-status="confirmed">
+
+                            <div class="booking-date">
+                                <span>NOV</span>
+                                <strong>08</strong>
+                                <small>2026</small>
+                            </div>
+
+                            <div class="booking-main-info">
+                                <span class="booking-type">INTERNATIONAL CONFERENCE</span>
+                                <h3>Geneva Global Summit</h3>
+                                <p><i class="fa-solid fa-location-dot"></i> Geneva, Switzerland</p>
+
+                                <div class="booking-meta">
+                                    <span><i class="fa-solid fa-language"></i> 3 channels</span>
+                                    <span><i class="fa-solid fa-headphones"></i> 120 receivers</span>
+                                </div>
+                            </div>
+
+                            <div class="booking-item-actions">
+                                <span class="booking-status confirmed">
+                                    <span></span> Confirmed
+                                </span>
+                                <button class="booking-detail-button" type="button" data-booking-details="geneva">
+                                    View Details <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </article>
+
+                        <article class="booking-item" data-search="european partner forum paris france business meeting"
+                            data-status="confirmed">
+
+                            <div class="booking-date">
+                                <span>NOV</span>
+                                <strong>18</strong>
+                                <small>2026</small>
+                            </div>
+
+                            <div class="booking-main-info">
+                                <span class="booking-type">BUSINESS MEETING</span>
+                                <h3>European Partner Forum</h3>
+                                <p><i class="fa-solid fa-location-dot"></i> Paris, France</p>
+
+                                <div class="booking-meta">
+                                    <span><i class="fa-solid fa-language"></i> 2 channels</span>
+                                    <span><i class="fa-solid fa-headphones"></i> 60 receivers</span>
+                                </div>
+                            </div>
+
+                            <div class="booking-item-actions">
+                                <span class="booking-status confirmed">
+                                    <span></span> Confirmed
+                                </span>
+                                <button class="booking-detail-button" type="button" data-booking-details="paris">
+                                    View Details <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </article>
+
+                        <article class="booking-item"
+                            data-search="global technology symposium london united kingdom technology"
+                            data-status="pending">
+
+                            <div class="booking-date">
+                                <span>DEC</span>
+                                <strong>05</strong>
+                                <small>2026</small>
+                            </div>
+
+                            <div class="booking-main-info">
+                                <span class="booking-type">TECHNOLOGY SYMPOSIUM</span>
+                                <h3>Global Technology Symposium</h3>
+                                <p><i class="fa-solid fa-location-dot"></i> London, United Kingdom</p>
+
+                                <div class="booking-meta">
+                                    <span><i class="fa-solid fa-language"></i> 4 requested channels</span>
+                                    <span><i class="fa-solid fa-headphones"></i> 200 requested receivers</span>
+                                </div>
+                            </div>
+
+                            <div class="booking-item-actions">
+                                <span class="booking-status pending">
+                                    <span></span> Pending
+                                </span>
+                                <button class="booking-detail-button" type="button" data-booking-details="london">
+                                    View Details <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </article>
+
+                        <article class="booking-item" data-search="international leadership congress singapore"
+                            data-status="review">
+
+                            <div class="booking-date">
+                                <span>JAN</span>
+                                <strong>16</strong>
+                                <small>2027</small>
+                            </div>
+
+                            <div class="booking-main-info">
+                                <span class="booking-type">LEADERSHIP CONGRESS</span>
+                                <h3>International Leadership Congress</h3>
+                                <p><i class="fa-solid fa-location-dot"></i> Singapore</p>
+
+                                <div class="booking-meta">
+                                    <span><i class="fa-solid fa-language"></i> 3 requested channels</span>
+                                    <span><i class="fa-solid fa-headphones"></i> 100 requested receivers</span>
+                                </div>
+                            </div>
+
+                            <div class="booking-item-actions">
+                                <span class="booking-status review">
+                                    <span></span> Under Review
+                                </span>
+                                <button class="booking-detail-button" type="button" data-booking-details="singapore">
+                                    View Details <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </article>
+
+                        <div class="booking-empty" id="bookingEmpty" hidden>
+                            <i class="fa-solid fa-calendar-xmark"></i>
+                            <h3>No bookings found</h3>
+                            <p>Try another search term or change the status filter.</p>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- SECTION 3: Booking Actions -->
+                <section class="booking-section" id="bookingActions">
+
+                    <div class="booking-section-heading">
+                        <div>
+                            <span class="booking-kicker">QUICK ACTIONS</span>
+                            <h2>Manage Your Events</h2>
+                            <p>Take action when your event requirements change.</p>
+                        </div>
+                    </div>
+
+                    <div class="booking-action-grid">
+
+                        <a href="contact.html" class="booking-action-card">
+                            <span class="booking-action-icon">
+                                <i class="fa-solid fa-calendar-plus"></i>
+                            </span>
+                            <span class="booking-action-copy">
+                                <strong>Request a Booking</strong>
+                                <small>Arrange equipment for a new event.</small>
+                            </span>
+                            <i class="fa-solid fa-arrow-right booking-action-arrow"></i>
+                        </a>
+
+                        <a href="d3.html" class="booking-action-card">
+                            <span class="booking-action-icon">
+                                <i class="fa-solid fa-headset"></i>
+                            </span>
+                            <span class="booking-action-copy">
+                                <strong>Update Requirements</strong>
+                                <small>Review equipment and language channels.</small>
+                            </span>
+                            <i class="fa-solid fa-arrow-right booking-action-arrow"></i>
+                        </a>
+
+                        <a href="d6.html" class="booking-action-card">
+                            <span class="booking-action-icon">
+                                <i class="fa-regular fa-message"></i>
+                            </span>
+                            <span class="booking-action-copy">
+                                <strong>Request a Change</strong>
+                                <small>Contact support to modify or cancel a booking.</small>
+                            </span>
+                            <i class="fa-solid fa-arrow-right booking-action-arrow"></i>
+                        </a>
+
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- Booking Details Modal -->
+            <div class="booking-modal" id="bookingDetailsModal" hidden>
+                <section class="booking-modal-card" role="dialog" aria-modal="true" aria-labelledby="bookingModalTitle"
+                    aria-describedby="bookingModalDescription" tabindex="-1">
+
+                    <button class="booking-modal-close" id="bookingModalClose" type="button"
+                        aria-label="Close booking details">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+
+                    <span class="booking-modal-icon">
+                        <i class="fa-regular fa-calendar-check"></i>
+                    </span>
+
+                    <span class="booking-kicker">BOOKING INFORMATION</span>
+                    <h2 id="bookingModalTitle">Event Details</h2>
+                    <p id="bookingModalDescription">Review your event arrangements.</p>
+
+                    <div class="booking-modal-details" id="bookingModalDetails"></div>
+
+                    <a href="d6.html" class="primary-button">
+                        <i class="fa-regular fa-message"></i>
+                        Contact Support
+                    </a>
+                </section>
+            </div>
+
+
+        </main>
+    </div>
+    <div class="modal-backdrop" id="logoutModal" hidden>
+        <section class="confirm-dialog" role="dialog" aria-modal="true" aria-labelledby="logoutTitle"
+            aria-describedby="logoutDescription" tabindex="-1">
+            <span class="logout-icon-wrap"><i class="fa-solid fa-arrow-right-from-bracket"
+                    aria-hidden="true"></i></span>
+            <h2 id="logoutTitle">Confirm Logout</h2>
+            <p id="logoutDescription">Are you sure you want to log out of your LinguaWave account?</p>
+            <div class="dialog-actions"><button class="secondary-button" id="stayButton" type="button">No,
+                    Stay</button><button class="confirm-logout-button" id="confirmLogoutButton" type="button"><i
+                        class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i> Yes, Logout</button></div>
+        </section>
+    </div>
+</body>
+
+</html>

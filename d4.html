@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="LinguaWave client workspace for managing interpretation equipment and event services.">
+    <title>LinguaWave</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="js/dashboard.js" defer></script>
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar" aria-label="Workspace sidebar">
+            <a class="brand" href="index.html" aria-label="LinguaWave dashboard"><img src="images/logo.png"
+                    alt="LinguaWave"></a>
+            <button class="sidebar-close" id="sidebarClose" type="button" aria-label="Close navigation"><i
+                    class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+            <div class="workspace-label">Workspace</div>
+            <nav class="side-nav" aria-label="Dashboard navigation">
+                <a class="nav-link" href="dashboard.html" data-page="Dashboard Overview"><i
+                        class="fa-solid fa-pie-chart" aria-hidden="true"></i><span>Dashboard Overview</span></a>
+                <a class="nav-link" href="d2.html" data-page="Event Bookings"><i class="fa-regular fa-calendar-check"
+                        aria-hidden="true"></i><span>Event Bookings</span></a>
+                <a class="nav-link" href="d3.html" data-page="Equipment & Language Channels"><i
+                        class="fa-solid fa-headphones" aria-hidden="true"></i><span>Equipment & Channels</span></a>
+                <a class="nav-link active" href="d4.html" data-page="Delivery & Setup Schedule"><i
+                        class="fa-solid fa-truck-fast" aria-hidden="true"></i><span>Delivery &amp; Schedule</span></a>
+                <a class="nav-link" href="d5.html" data-page="Payments & Invoices"><i class="fa-regular fa-credit-card"
+                        aria-hidden="true"></i><span>Payments</span></a>
+                <a class="nav-link" href="d6.html" data-page="Support & Service Requests"><i
+                        class="fa-regular fa-life-ring" aria-hidden="true"></i><span>Support</span></a>
+            </nav>
+            <div class="sidebar-bottom">
+
+                <button class="logout-button" type="button" data-logout><i class="fa-solid fa-arrow-right-from-bracket"
+                        aria-hidden="true"></i><span>Logout</span></button>
+            </div>
+        </aside>
+        <div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+        <main class="main-area">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation"
+                        aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button>
+                    <div class="page-heading"><span class="eyebrow">Client workspace</span>
+                        <h1 id="pageTitle">Delivery &amp; Schedule</h1>
+                    </div>
+                </div>
+                <div class="topbar-actions">
+                    <div class="popover-wrap" id="notificationsWrap">
+                        <button class="icon-button notification-button" id="notificationToggle" type="button"
+                            aria-label="Notifications, 3 unread" aria-expanded="false"
+                            aria-controls="notificationPanel"><i class="fa-solid fa-bell" aria-hidden="true"></i><span
+                                class="notification-badge">3</span></button>
+                        <section class="popover notification-panel" id="notificationPanel" aria-label="Notifications"
+                            hidden>
+                            <div class="popover-heading">
+                                <div><strong>Notifications</strong><span>3 updates for your workspace</span></div><span
+                                    class="live-label">DEMO</span>
+                            </div>
+                            <a class="notification-item" href="d2.html" data-page="Event Bookings"><span
+                                    class="notice-icon lilac"><i class="fa-regular fa-calendar-check"
+                                        aria-hidden="true"></i></span><span><strong>Upcoming event
+                                        booking</strong><small>Your Geneva Summit is coming up in 5 days.</small><em>2
+                                        hours ago</em></span></a>
+                            <a class="notification-item" href="d4.html" data-page="Delivery & Setup Schedule"><span
+                                    class="notice-icon plum"><i class="fa-solid fa-truck-fast"
+                                        aria-hidden="true"></i></span><span><strong>Delivery &amp; setup
+                                        scheduled</strong><small>Equipment arrival is confirmed for 14
+                                        June.</small><em>Yesterday</em></span></a>
+                            <a class="notification-item" href="d5.html" data-page="Payments & Invoices"><span
+                                    class="notice-icon lilac"><i class="fa-regular fa-file-lines"
+                                        aria-hidden="true"></i></span><span><strong>Invoice
+                                        reminder</strong><small>Invoice LW-2048 is ready for your review.</small><em>2
+                                        days ago</em></span></a>
+                            <div class="demo-note">Sample notifications for this frontend prototype.</div>
+                        </section>
+                    </div>
+                    <button class="icon-button" id="themeToggle" type="button" aria-label="Switch to dark mode"
+                        title="Switch to dark mode"><i class="fa-solid fa-moon" aria-hidden="true"></i></button>
+                    <button class="icon-button direction-button" id="directionToggle" type="button"
+                        aria-label="Switch to right-to-left layout" title="Switch text direction"><i
+                            class="fa-solid fa-arrow-right-arrow-left" aria-hidden="true"></i></button>
+                    <div class="popover-wrap profile-wrap" id="profileWrap">
+                        <button class="profile-button" id="profileToggle" type="button" aria-expanded="false"
+                            aria-controls="profilePanel"><img class="avatar avatar-image" alt="Demo client avatar"
+                                src="images/client-profile.jpg"><span class="profile-copy"><strong>Rakesh
+                                    M</strong><small>Event Client</small></span></button>
+                        <section class="popover profile-panel" id="profilePanel" aria-label="Client account menu"
+                            hidden>
+                            <div class="profile-menu-heading"><img class="avatar avatar-image" alt=""
+                                    src="images/client-profile.jpg"><span><strong>Demo Client</strong><small>Event
+                                        Client - Demo account</small></span></div>
+
+                        </section>
+                    </div>
+                </div>
+            </header>
+
+
+            <div class="content-scroll delivery-page" id="contentScroll">
+
+                <!-- SECTION 1: DELIVERY OVERVIEW -->
+                <section class="delivery-welcome">
+                    <div>
+                        <span class="delivery-eyebrow">LOGISTICS & OPERATIONS</span>
+                        <h1>Delivery & Schedule</h1>
+                        <p>Keep track of equipment deliveries, event setup schedules, and venue requirements in one
+                            place.</p>
+                    </div>
+                    <a href="d2.html" class="delivery-primary-btn">
+                        <i class="fa-solid fa-calendar-check"></i>
+                        View Bookings
+                    </a>
+                </section>
+
+                <section class="delivery-section">
+                    <div class="delivery-section-heading">
+                        <div>
+                            <span class="delivery-step">01 / OVERVIEW</span>
+                            <h2>Delivery Overview</h2>
+                            <p>A quick snapshot of your upcoming event logistics.</p>
+                        </div>
+                        <span class="delivery-demo-label">
+                            <i class="fa-regular fa-clock"></i>
+                            Sample schedule
+                        </span>
+                    </div>
+
+                    <div class="delivery-stats">
+                        <article class="delivery-stat-card">
+                            <span class="delivery-stat-icon">
+                                <i class="fa-solid fa-truck-fast"></i>
+                            </span>
+                            <p>Next Delivery</p>
+                            <h3>08 Nov</h3>
+                            <span class="delivery-stat-foot">Geneva Global Summit</span>
+                        </article>
+
+                        <article class="delivery-stat-card">
+                            <span class="delivery-stat-icon">
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </span>
+                            <p>Scheduled Deliveries</p>
+                            <h3>03</h3>
+                            <span class="delivery-stat-foot">Upcoming event deliveries</span>
+                        </article>
+
+                        <article class="delivery-stat-card">
+                            <span class="delivery-stat-icon">
+                                <i class="fa-solid fa-box-open"></i>
+                            </span>
+                            <p>Delivered</p>
+                            <h3>01</h3>
+                            <span class="delivery-stat-foot">Sample completed delivery</span>
+                        </article>
+
+                        <article class="delivery-stat-card">
+                            <span class="delivery-stat-icon">
+                                <i class="fa-solid fa-clipboard-check"></i>
+                            </span>
+                            <p>Pending Confirmation</p>
+                            <h3>01</h3>
+                            <span class="delivery-stat-foot">Schedule needs confirmation</span>
+                        </article>
+                    </div>
+
+                    <div class="delivery-next-card">
+                        <div class="delivery-next-icon">
+                            <i class="fa-solid fa-truck-ramp-box"></i>
+                        </div>
+                        <div class="delivery-next-info">
+                            <span class="delivery-next-label">NEXT SCHEDULED DELIVERY</span>
+                            <h3>Geneva Global Summit</h3>
+                            <p><i class="fa-solid fa-location-dot"></i> Geneva, Switzerland</p>
+                            <div class="delivery-next-meta">
+                                <span><i class="fa-regular fa-calendar"></i> 8 November 2026</span>
+                                <span><i class="fa-regular fa-clock"></i> 08:00 AM</span>
+                                <span><i class="fa-solid fa-headphones"></i> 120 receivers</span>
+                            </div>
+                        </div>
+                        <span class="delivery-status status-scheduled">Scheduled</span>
+                    </div>
+
+                    <div class="delivery-demo-note">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <p>All dates, delivery counts, and statuses on this page are sample data. Update them with your
+                            actual logistics records.</p>
+                    </div>
+                </section>
+
+                <!-- SECTION 2: DELIVERY SCHEDULE -->
+                <section class="delivery-section">
+                    <div class="delivery-section-heading">
+                        <div>
+                            <span class="delivery-step">02 / SCHEDULE</span>
+                            <h2>Delivery Schedule</h2>
+                            <p>Review each event's delivery timing and current status.</p>
+                        </div>
+                    </div>
+
+                    <div class="delivery-toolbar">
+                        <div class="delivery-search">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="search" id="deliverySearch" placeholder="Search event or venue..."
+                                aria-label="Search deliveries">
+                        </div>
+
+                        <select id="deliveryStatusFilter" aria-label="Filter delivery status">
+                            <option value="all">All statuses</option>
+                            <option value="scheduled">Scheduled</option>
+                            <option value="pending">Pending confirmation</option>
+                            <option value="delivered">Delivered</option>
+                        </select>
+                    </div>
+
+                    <div class="delivery-schedule-list" id="deliveryScheduleList">
+
+                        <article class="delivery-schedule-card" data-search="geneva global summit geneva switzerland"
+                            data-status="scheduled">
+                            <div class="delivery-date-block">
+                                <span>NOV</span>
+                                <strong>08</strong>
+                                <small>2026</small>
+                            </div>
+                            <div class="delivery-schedule-info">
+                                <h3>Geneva Global Summit</h3>
+                                <p><i class="fa-solid fa-location-dot"></i> Geneva, Switzerland</p>
+                                <div class="delivery-schedule-meta">
+                                    <span><i class="fa-regular fa-clock"></i> 08:00 AM</span>
+                                    <span><i class="fa-solid fa-box"></i> 120 receivers</span>
+                                </div>
+                            </div>
+                            <div class="delivery-schedule-action">
+                                <span class="delivery-status status-scheduled">Scheduled</span>
+                                <button type="button" class="delivery-details-btn" data-event="Geneva Global Summit"
+                                    data-date="8 November 2026" data-time="08:00 AM" data-venue="Geneva, Switzerland"
+                                    data-equipment="120 interpretation receivers" data-status="Scheduled"
+                                    data-instructions="Coordinate venue access with the event organiser before arrival.">
+                                    View details <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </article>
+
+                        <article class="delivery-schedule-card" data-search="european partner forum paris france"
+                            data-status="scheduled">
+                            <div class="delivery-date-block">
+                                <span>NOV</span>
+                                <strong>18</strong>
+                                <small>2026</small>
+                            </div>
+                            <div class="delivery-schedule-info">
+                                <h3>European Partner Forum</h3>
+                                <p><i class="fa-solid fa-location-dot"></i> Paris, France</p>
+                                <div class="delivery-schedule-meta">
+                                    <span><i class="fa-regular fa-clock"></i> 09:30 AM</span>
+                                    <span><i class="fa-solid fa-box"></i> 60 receivers</span>
+                                </div>
+                            </div>
+                            <div class="delivery-schedule-action">
+                                <span class="delivery-status status-scheduled">Scheduled</span>
+                                <button type="button" class="delivery-details-btn" data-event="European Partner Forum"
+                                    data-date="18 November 2026" data-time="09:30 AM" data-venue="Paris, France"
+                                    data-equipment="60 interpretation receivers" data-status="Scheduled"
+                                    data-instructions="Confirm the delivery entrance and unloading point with the venue contact.">
+                                    View details <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </article>
+
+                        <article class="delivery-schedule-card"
+                            data-search="global technology symposium london united kingdom" data-status="pending">
+                            <div class="delivery-date-block">
+                                <span>DEC</span>
+                                <strong>05</strong>
+                                <small>2026</small>
+                            </div>
+                            <div class="delivery-schedule-info">
+                                <h3>Global Technology Symposium</h3>
+                                <p><i class="fa-solid fa-location-dot"></i> London, United Kingdom</p>
+                                <div class="delivery-schedule-meta">
+                                    <span><i class="fa-regular fa-clock"></i> 07:30 AM</span>
+                                    <span><i class="fa-solid fa-box"></i> 200 receivers requested</span>
+                                </div>
+                            </div>
+                            <div class="delivery-schedule-action">
+                                <span class="delivery-status status-pending">Pending confirmation</span>
+                                <button type="button" class="delivery-details-btn"
+                                    data-event="Global Technology Symposium" data-date="5 December 2026"
+                                    data-time="07:30 AM" data-venue="London, United Kingdom"
+                                    data-equipment="200 interpretation receivers requested"
+                                    data-status="Pending confirmation"
+                                    data-instructions="Confirm the final receiver quantity and venue access time before dispatch.">
+                                    View details <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </article>
+
+                        <article class="delivery-schedule-card"
+                            data-search="international leadership congress singapore" data-status="delivered">
+                            <div class="delivery-date-block">
+                                <span>OCT</span>
+                                <strong>12</strong>
+                                <small>2026</small>
+                            </div>
+                            <div class="delivery-schedule-info">
+                                <h3>International Leadership Congress</h3>
+                                <p><i class="fa-solid fa-location-dot"></i> Singapore</p>
+                                <div class="delivery-schedule-meta">
+                                    <span><i class="fa-regular fa-clock"></i> 10:00 AM</span>
+                                    <span><i class="fa-solid fa-box"></i> 100 receivers</span>
+                                </div>
+                            </div>
+                            <div class="delivery-schedule-action">
+                                <span class="delivery-status status-delivered">Delivered</span>
+                                <button type="button" class="delivery-details-btn"
+                                    data-event="International Leadership Congress" data-date="12 October 2026"
+                                    data-time="10:00 AM" data-venue="Singapore"
+                                    data-equipment="100 interpretation receivers" data-status="Delivered"
+                                    data-instructions="Sample record: delivery marked complete. Verify the receipt with your logistics team.">
+                                    View details <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </article>
+
+                    </div>
+
+                    <div class="delivery-empty" id="deliveryEmpty" hidden>
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <h3>No deliveries found</h3>
+                        <p>Try another event name or delivery status.</p>
+                    </div>
+                </section>
+
+                <!-- SECTION 3: DELIVERY INSTRUCTIONS -->
+                <section class="delivery-section">
+                    <div class="delivery-section-heading">
+                        <div>
+                            <span class="delivery-step">03 / PREPARATION</span>
+                            <h2>Delivery Instructions</h2>
+                            <p>Keep the key details ready to help your equipment arrive on time.</p>
+                        </div>
+                        <a href="d6.html" class="delivery-outline-btn">
+                            <i class="fa-regular fa-message"></i>
+                            Contact Support
+                        </a>
+                    </div>
+
+                    <div class="delivery-instructions-grid">
+                        <article class="delivery-instruction-card">
+                            <span class="delivery-instruction-icon">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </span>
+                            <h3>Venue Access</h3>
+                            <p>Confirm the complete venue address, delivery entrance, loading area, and any access
+                                restrictions.</p>
+                            <span class="delivery-instruction-tip">Before dispatch</span>
+                        </article>
+
+                        <article class="delivery-instruction-card">
+                            <span class="delivery-instruction-icon">
+                                <i class="fa-solid fa-user-tie"></i>
+                            </span>
+                            <h3>On-site Contact</h3>
+                            <p>Make sure the event organiser or venue contact is available to receive the equipment.</p>
+                            <span class="delivery-instruction-tip">Contact details required</span>
+                        </article>
+
+                        <article class="delivery-instruction-card">
+                            <span class="delivery-instruction-icon">
+                                <i class="fa-solid fa-headphones-simple"></i>
+                            </span>
+                            <h3>Setup Requirements</h3>
+                            <p>Confirm receiver quantities, language channels, interpreter booth setup, and testing
+                                time.</p>
+                            <span class="delivery-instruction-tip">Before event setup</span>
+                        </article>
+                    </div>
+
+                    <div class="delivery-support-banner">
+                        <div class="delivery-support-icon">
+                            <i class="fa-solid fa-headset"></i>
+                        </div>
+                        <div class="delivery-support-copy">
+                            <h3>Need to change a delivery schedule?</h3>
+                            <p>Contact support to discuss timing changes, venue access, or equipment delivery issues.
+                            </p>
+                        </div>
+                        <a href="d6.html" class="delivery-primary-btn">
+                            Get assistance <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- DELIVERY DETAILS MODAL -->
+            <div class="delivery-modal" id="deliveryDetailsModal" aria-hidden="true">
+                <div class="delivery-modal-backdrop" data-delivery-close></div>
+                <div class="delivery-modal-panel" role="dialog" aria-modal="true" aria-labelledby="deliveryModalTitle">
+                    <button type="button" class="delivery-modal-close" data-delivery-close
+                        aria-label="Close delivery details">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+
+                    <span class="delivery-modal-icon">
+                        <i class="fa-solid fa-truck-fast"></i>
+                    </span>
+                    <span class="delivery-step">DELIVERY DETAILS</span>
+                    <h2 id="deliveryModalTitle">Event delivery</h2>
+                    <p class="delivery-modal-subtitle">Review the schedule and delivery requirements.</p>
+
+                    <div class="delivery-modal-data">
+                        <div><span>Event</span><strong id="deliveryModalEvent">—</strong></div>
+                        <div><span>Date</span><strong id="deliveryModalDate">—</strong></div>
+                        <div><span>Time</span><strong id="deliveryModalTime">—</strong></div>
+                        <div><span>Venue</span><strong id="deliveryModalVenue">—</strong></div>
+                        <div><span>Equipment</span><strong id="deliveryModalEquipment">—</strong></div>
+                        <div><span>Status</span><strong id="deliveryModalStatus">—</strong></div>
+                        <div class="delivery-modal-instructions">
+                            <span>Instructions</span>
+                            <strong id="deliveryModalInstructions">—</strong>
+                        </div>
+                    </div>
+
+                    <a href="d6.html" class="delivery-primary-btn delivery-modal-contact">
+                        <i class="fa-regular fa-message"></i>
+                        Contact Support
+                    </a>
+                </div>
+            </div>
+
+        </main>
+    </div>
+    <div class="modal-backdrop" id="logoutModal" hidden>
+        <section class="confirm-dialog" role="dialog" aria-modal="true" aria-labelledby="logoutTitle"
+            aria-describedby="logoutDescription" tabindex="-1">
+            <span class="logout-icon-wrap"><i class="fa-solid fa-arrow-right-from-bracket"
+                    aria-hidden="true"></i></span>
+            <h2 id="logoutTitle">Confirm Logout</h2>
+            <p id="logoutDescription">Are you sure you want to log out of your LinguaWave account?</p>
+            <div class="dialog-actions"><button class="secondary-button" id="stayButton" type="button">No,
+                    Stay</button><button class="confirm-logout-button" id="confirmLogoutButton" type="button"><i
+                        class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i> Yes, Logout</button></div>
+        </section>
+    </div>
+</body>
+
+</html>

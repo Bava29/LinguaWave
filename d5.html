@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="LinguaWave client workspace for managing interpretation equipment and event services.">
+    <title>LinguaWave</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="js/dashboard.js" defer></script>
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar" aria-label="Workspace sidebar">
+            <a class="brand" href="index.html" aria-label="LinguaWave dashboard"><img src="images/logo.png"
+                    alt="LinguaWave"></a>
+            <button class="sidebar-close" id="sidebarClose" type="button" aria-label="Close navigation"><i
+                    class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+            <div class="workspace-label">Workspace</div>
+            <nav class="side-nav" aria-label="Dashboard navigation">
+                <a class="nav-link" href="dashboard.html" data-page="Dashboard Overview"><i
+                        class="fa-solid fa-pie-chart" aria-hidden="true"></i><span>Dashboard Overview</span></a>
+                <a class="nav-link" href="d2.html" data-page="Event Bookings"><i class="fa-regular fa-calendar-check"
+                        aria-hidden="true"></i><span>Event Bookings</span></a>
+                <a class="nav-link" href="d3.html" data-page="Equipment & Language Channels"><i
+                        class="fa-solid fa-headphones" aria-hidden="true"></i><span>Equipment & Channels</span></a>
+                <a class="nav-link" href="d4.html" data-page="Delivery & Setup Schedule"><i
+                        class="fa-solid fa-truck-fast" aria-hidden="true"></i><span>Delivery &amp; Schedule</span></a>
+                <a class="nav-link active" href="d5.html" data-page="Payments & Invoices"><i
+                        class="fa-regular fa-credit-card" aria-hidden="true"></i><span>Payments</span></a>
+                <a class="nav-link" href="d6.html" data-page="Support & Service Requests"><i
+                        class="fa-regular fa-life-ring" aria-hidden="true"></i><span>Support</span></a>
+            </nav>
+            <div class="sidebar-bottom">
+
+                <button class="logout-button" type="button" data-logout><i class="fa-solid fa-arrow-right-from-bracket"
+                        aria-hidden="true"></i><span>Logout</span></button>
+            </div>
+        </aside>
+        <div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+        <main class="main-area">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation"
+                        aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button>
+                    <div class="page-heading"><span class="eyebrow">Client workspace</span>
+                        <h1 id="pageTitle">Payments</h1>
+                    </div>
+                </div>
+                <div class="topbar-actions">
+                    <div class="popover-wrap" id="notificationsWrap">
+                        <button class="icon-button notification-button" id="notificationToggle" type="button"
+                            aria-label="Notifications, 3 unread" aria-expanded="false"
+                            aria-controls="notificationPanel"><i class="fa-solid fa-bell" aria-hidden="true"></i><span
+                                class="notification-badge">3</span></button>
+                        <section class="popover notification-panel" id="notificationPanel" aria-label="Notifications"
+                            hidden>
+                            <div class="popover-heading">
+                                <div><strong>Notifications</strong><span>3 updates for your workspace</span></div><span
+                                    class="live-label">DEMO</span>
+                            </div>
+                            <a class="notification-item" href="d2.html" data-page="Event Bookings"><span
+                                    class="notice-icon lilac"><i class="fa-regular fa-calendar-check"
+                                        aria-hidden="true"></i></span><span><strong>Upcoming event
+                                        booking</strong><small>Your Geneva Summit is coming up in 5 days.</small><em>2
+                                        hours ago</em></span></a>
+                            <a class="notification-item" href="d4.html" data-page="Delivery & Setup Schedule"><span
+                                    class="notice-icon plum"><i class="fa-solid fa-truck-fast"
+                                        aria-hidden="true"></i></span><span><strong>Delivery &amp; setup
+                                        scheduled</strong><small>Equipment arrival is confirmed for 14
+                                        June.</small><em>Yesterday</em></span></a>
+                            <a class="notification-item" href="d5.html" data-page="Payments & Invoices"><span
+                                    class="notice-icon lilac"><i class="fa-regular fa-file-lines"
+                                        aria-hidden="true"></i></span><span><strong>Invoice
+                                        reminder</strong><small>Invoice LW-2048 is ready for your review.</small><em>2
+                                        days ago</em></span></a>
+                            <div class="demo-note">Sample notifications for this frontend prototype.</div>
+                        </section>
+                    </div>
+                    <button class="icon-button" id="themeToggle" type="button" aria-label="Switch to dark mode"
+                        title="Switch to dark mode"><i class="fa-solid fa-moon" aria-hidden="true"></i></button>
+                    <button class="icon-button direction-button" id="directionToggle" type="button"
+                        aria-label="Switch to right-to-left layout" title="Switch text direction"><i
+                            class="fa-solid fa-arrow-right-arrow-left" aria-hidden="true"></i></button>
+                    <div class="popover-wrap profile-wrap" id="profileWrap">
+                        <button class="profile-button" id="profileToggle" type="button" aria-expanded="false"
+                            aria-controls="profilePanel"><img class="avatar avatar-image" alt="Demo client avatar"
+                                src="images/client-profile.jpg"><span class="profile-copy"><strong>Rakesh
+                                    M</strong><small>Event Client</small></span></button>
+                        <section class="popover profile-panel" id="profilePanel" aria-label="Client account menu"
+                            hidden>
+                            <div class="profile-menu-heading"><img class="avatar avatar-image" alt=""
+                                    src="images/client-profile.jpg"><span><strong>Demo Client</strong><small>Event
+                                        Client - Demo account</small></span></div>
+
+                        </section>
+                    </div>
+                </div>
+            </header>
+
+
+            <div class="content-scroll payments-page" id="contentScroll">
+
+                <!-- SECTION 1: PAYMENT OVERVIEW -->
+                <section class="payments-welcome">
+                    <div>
+                        <span class="payments-eyebrow">BILLING & FINANCE</span>
+                        <h1>Payments & Invoices</h1>
+                        <p>Track your event expenses, review outstanding invoices, and keep your payment records
+                            organised.</p>
+                    </div>
+                    <a href="d2.html" class="payments-primary-btn">
+                        <i class="fa-solid fa-calendar-check"></i>
+                        View Bookings
+                    </a>
+                </section>
+
+                <section class="payments-section">
+                    <div class="payments-section-heading">
+                        <div>
+                            <span class="payments-step">01 / OVERVIEW</span>
+                            <h2>Payment Overview</h2>
+                            <p>A clear snapshot of your account and upcoming payment obligations.</p>
+                        </div>
+                        <span class="payments-demo-label">
+                            <i class="fa-regular fa-calendar"></i>
+                            Sample account
+                        </span>
+                    </div>
+
+                    <div class="payments-stats">
+                        <article class="payments-stat-card">
+                            <div class="payments-stat-top">
+                                <span class="payments-stat-icon">
+                                    <i class="fa-solid fa-circle-check"></i>
+                                </span>
+                                <span class="payments-stat-label">TOTAL PAID</span>
+                            </div>
+                            <h3>€4,250.00</h3>
+                            <p>Payments recorded</p>
+                            <span class="payments-stat-foot">Across sample invoices</span>
+                        </article>
+
+                        <article class="payments-stat-card">
+                            <div class="payments-stat-top">
+                                <span class="payments-stat-icon">
+                                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                                </span>
+                                <span class="payments-stat-label">OUTSTANDING</span>
+                            </div>
+                            <h3>€1,800.00</h3>
+                            <p>Awaiting payment</p>
+                            <span class="payments-stat-foot">Review due dates below</span>
+                        </article>
+
+                        <article class="payments-stat-card">
+                            <div class="payments-stat-top">
+                                <span class="payments-stat-icon">
+                                    <i class="fa-regular fa-clock"></i>
+                                </span>
+                                <span class="payments-stat-label">NEXT PAYMENT</span>
+                            </div>
+                            <h3>€1,200.00</h3>
+                            <p>Due 28 Nov 2026</p>
+                            <span class="payments-stat-foot">European Partner Forum</span>
+                        </article>
+
+                        <article class="payments-stat-card">
+                            <div class="payments-stat-top">
+                                <span class="payments-stat-icon">
+                                    <i class="fa-solid fa-triangle-exclamation"></i>
+                                </span>
+                                <span class="payments-stat-label">OVERDUE</span>
+                            </div>
+                            <h3>€600.00</h3>
+                            <p>Payment past due</p>
+                            <span class="payments-stat-foot">Review invoice INV-2026-014</span>
+                        </article>
+                    </div>
+
+                    <div class="payments-account-note">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <p>These figures are sample values for the interface. Connect your billing records to display
+                            accurate balances and payment statuses.</p>
+                    </div>
+                </section>
+
+                <!-- SECTION 2: INVOICES AND PAYMENTS -->
+                <section class="payments-section">
+                    <div class="payments-section-heading">
+                        <div>
+                            <span class="payments-step">02 / RECORDS</span>
+                            <h2>Invoices & Payments</h2>
+                            <p>Find an invoice, check its due date, and review the current payment status.</p>
+                        </div>
+                    </div>
+
+                    <div class="invoice-toolbar">
+                        <label class="invoice-search">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="search" id="invoiceSearch" placeholder="Search invoice, event, or amount..."
+                                aria-label="Search invoices">
+                        </label>
+
+                        <select id="invoiceStatusFilter" aria-label="Filter invoices by status">
+                            <option value="all">All statuses</option>
+                            <option value="paid">Paid</option>
+                            <option value="pending">Pending</option>
+                            <option value="overdue">Overdue</option>
+                        </select>
+                    </div>
+
+                    <div class="invoice-list" id="invoiceList">
+
+                        <article class="invoice-card" data-search="inv-2026-011 geneva global summit 2450"
+                            data-status="paid" data-invoice="INV-2026-011" data-event="Geneva Global Summit"
+                            data-issue="20 October 2026" data-due="30 October 2026" data-amount="€2,450.00"
+                            data-status-label="Paid" data-method="Bank transfer" data-reference="LW-DEMO-011">
+                            <div class="invoice-file-icon">
+                                <i class="fa-solid fa-file-circle-check"></i>
+                            </div>
+                            <div class="invoice-main">
+                                <div class="invoice-title-row">
+                                    <h3>INV-2026-011</h3>
+                                    <span class="invoice-status invoice-paid">Paid</span>
+                                </div>
+                                <p>Geneva Global Summit</p>
+                                <div class="invoice-meta">
+                                    <span>Issued 20 Oct 2026</span>
+                                    <span>Due 30 Oct 2026</span>
+                                </div>
+                            </div>
+                            <div class="invoice-amount">
+                                <span>Invoice amount</span>
+                                <strong>€2,450.00</strong>
+                            </div>
+                            <button type="button" class="invoice-view-btn" data-invoice-view
+                                aria-label="View invoice INV-2026-011">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </button>
+                        </article>
+
+                        <article class="invoice-card" data-search="inv-2026-014 international leadership congress 600"
+                            data-status="overdue" data-invoice="INV-2026-014"
+                            data-event="International Leadership Congress" data-issue="1 October 2026"
+                            data-due="15 October 2026" data-amount="€600.00" data-status-label="Overdue"
+                            data-method="Not recorded" data-reference="Not available">
+                            <div class="invoice-file-icon">
+                                <i class="fa-solid fa-file-circle-exclamation"></i>
+                            </div>
+                            <div class="invoice-main">
+                                <div class="invoice-title-row">
+                                    <h3>INV-2026-014</h3>
+                                    <span class="invoice-status invoice-overdue">Overdue</span>
+                                </div>
+                                <p>International Leadership Congress</p>
+                                <div class="invoice-meta">
+                                    <span>Issued 1 Oct 2026</span>
+                                    <span>Due 15 Oct 2026</span>
+                                </div>
+                            </div>
+                            <div class="invoice-amount">
+                                <span>Invoice amount</span>
+                                <strong>€600.00</strong>
+                            </div>
+                            <button type="button" class="invoice-view-btn" data-invoice-view
+                                aria-label="View invoice INV-2026-014">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </button>
+                        </article>
+
+                        <article class="invoice-card" data-search="inv-2026-018 european partner forum 1200"
+                            data-status="pending" data-invoice="INV-2026-018" data-event="European Partner Forum"
+                            data-issue="28 October 2026" data-due="28 November 2026" data-amount="€1,200.00"
+                            data-status-label="Pending" data-method="Not recorded" data-reference="Awaiting payment">
+                            <div class="invoice-file-icon">
+                                <i class="fa-solid fa-file-invoice"></i>
+                            </div>
+                            <div class="invoice-main">
+                                <div class="invoice-title-row">
+                                    <h3>INV-2026-018</h3>
+                                    <span class="invoice-status invoice-pending">Pending</span>
+                                </div>
+                                <p>European Partner Forum</p>
+                                <div class="invoice-meta">
+                                    <span>Issued 28 Oct 2026</span>
+                                    <span>Due 28 Nov 2026</span>
+                                </div>
+                            </div>
+                            <div class="invoice-amount">
+                                <span>Invoice amount</span>
+                                <strong>€1,200.00</strong>
+                            </div>
+                            <button type="button" class="invoice-view-btn" data-invoice-view
+                                aria-label="View invoice INV-2026-018">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </button>
+                        </article>
+
+                        <article class="invoice-card" data-search="inv-2026-021 global technology symposium 600"
+                            data-status="pending" data-invoice="INV-2026-021" data-event="Global Technology Symposium"
+                            data-issue="22 October 2026" data-due="20 November 2026" data-amount="€600.00"
+                            data-status-label="Pending" data-method="Not recorded" data-reference="Awaiting payment">
+                            <div class="invoice-file-icon">
+                                <i class="fa-solid fa-file-invoice"></i>
+                            </div>
+                            <div class="invoice-main">
+                                <div class="invoice-title-row">
+                                    <h3>INV-2026-021</h3>
+                                    <span class="invoice-status invoice-pending">Pending</span>
+                                </div>
+                                <p>Global Technology Symposium</p>
+                                <div class="invoice-meta">
+                                    <span>Issued 22 Oct 2026</span>
+                                    <span>Due 20 Nov 2026</span>
+                                </div>
+                            </div>
+                            <div class="invoice-amount">
+                                <span>Invoice amount</span>
+                                <strong>€600.00</strong>
+                            </div>
+                            <button type="button" class="invoice-view-btn" data-invoice-view
+                                aria-label="View invoice INV-2026-021">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </button>
+                        </article>
+
+                    </div>
+
+                    <div class="invoice-empty" id="invoiceEmpty" hidden>
+                        <i class="fa-solid fa-file-circle-question"></i>
+                        <h3>No invoices found</h3>
+                        <p>Try a different invoice number, event name, or status.</p>
+                    </div>
+                </section>
+
+                <!-- SECTION 3: PAYMENT DETAILS AND SUPPORT -->
+                <section class="payments-section">
+                    <div class="payments-section-heading">
+                        <div>
+                            <span class="payments-step">03 / PAYMENT HELP</span>
+                            <h2>Payment Details & Support</h2>
+                            <p>Know what to check before making a payment or requesting a receipt.</p>
+                        </div>
+                    </div>
+
+                    <div class="payment-help-grid">
+                        <article class="payment-help-card">
+                            <span class="payment-help-icon">
+                                <i class="fa-solid fa-building-columns"></i>
+                            </span>
+                            <h3>Payment Method</h3>
+                            <p>Check the payment instructions on your official invoice and use the verified billing
+                                details provided by LinguaWave.</p>
+                            <span class="payment-help-caption">Verify before paying</span>
+                        </article>
+
+                        <article class="payment-help-card">
+                            <span class="payment-help-icon">
+                                <i class="fa-solid fa-file-arrow-down"></i>
+                            </span>
+                            <h3>Invoices & Receipts</h3>
+                            <p>Open an invoice to review the billing reference, amount, due date, and recorded payment
+                                details.</p>
+                            <span class="payment-help-caption">Keep records organised</span>
+                        </article>
+
+                        <article class="payment-help-card">
+                            <span class="payment-help-icon">
+                                <i class="fa-solid fa-headset"></i>
+                            </span>
+                            <h3>Billing Support</h3>
+                            <p>Contact support for invoice corrections, payment confirmation issues, or questions about
+                                an outstanding balance.</p>
+                            <span class="payment-help-caption">Get billing assistance</span>
+                        </article>
+                    </div>
+
+                    <div class="payments-support-banner">
+                        <div class="payments-support-icon">
+                            <i class="fa-regular fa-message"></i>
+                        </div>
+                        <div class="payments-support-copy">
+                            <h3>Have a question about an invoice?</h3>
+                            <p>Share the invoice number with support so the billing team can identify the record.</p>
+                        </div>
+                        <a href="d6.html" class="payments-primary-btn">
+                            Contact Support <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- INVOICE DETAILS MODAL -->
+            <div class="invoice-modal" id="invoiceDetailsModal" aria-hidden="true">
+                <div class="invoice-modal-backdrop" data-invoice-close></div>
+                <div class="invoice-modal-panel" role="dialog" aria-modal="true" aria-labelledby="invoiceModalTitle">
+                    <button type="button" class="invoice-modal-close" data-invoice-close
+                        aria-label="Close invoice details">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+
+                    <span class="invoice-modal-icon">
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                    </span>
+                    <span class="payments-step">INVOICE DETAILS</span>
+                    <h2 id="invoiceModalTitle">Invoice information</h2>
+                    <p class="invoice-modal-subtitle">Review the billing information recorded for this invoice.</p>
+
+                    <div class="invoice-modal-data">
+                        <div><span>Invoice number</span><strong id="invoiceModalNumber">—</strong></div>
+                        <div><span>Event</span><strong id="invoiceModalEvent">—</strong></div>
+                        <div><span>Issue date</span><strong id="invoiceModalIssue">—</strong></div>
+                        <div><span>Due date</span><strong id="invoiceModalDue">—</strong></div>
+                        <div><span>Amount</span><strong id="invoiceModalAmount">—</strong></div>
+                        <div><span>Status</span><strong id="invoiceModalStatus">—</strong></div>
+                        <div><span>Payment method</span><strong id="invoiceModalMethod">—</strong></div>
+                        <div><span>Reference</span><strong id="invoiceModalReference">—</strong></div>
+                    </div>
+
+                    <div class="invoice-modal-actions">
+                        <button type="button" class="payments-outline-btn" id="printInvoiceButton">
+                            <i class="fa-solid fa-print"></i> Print details
+                        </button>
+                        <a href="d6.html" class="payments-primary-btn">
+                            <i class="fa-regular fa-message"></i> Contact Support
+                        </a>
+                    </div>
+                    <p class="invoice-print-note">Print details is a browser print view, not an official invoice PDF.
+                    </p>
+                </div>
+            </div>
+
+        </main>
+    </div>
+    <div class="modal-backdrop" id="logoutModal" hidden>
+        <section class="confirm-dialog" role="dialog" aria-modal="true" aria-labelledby="logoutTitle"
+            aria-describedby="logoutDescription" tabindex="-1">
+            <span class="logout-icon-wrap"><i class="fa-solid fa-arrow-right-from-bracket"
+                    aria-hidden="true"></i></span>
+            <h2 id="logoutTitle">Confirm Logout</h2>
+            <p id="logoutDescription">Are you sure you want to log out of your LinguaWave account?</p>
+            <div class="dialog-actions"><button class="secondary-button" id="stayButton" type="button">No,
+                    Stay</button><button class="confirm-logout-button" id="confirmLogoutButton" type="button"><i
+                        class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i> Yes, Logout</button></div>
+        </section>
+    </div>
+</body>
+
+</html>

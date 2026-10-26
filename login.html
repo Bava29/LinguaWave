@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Sign in to your LinguaWave client workspace.">
+    <title>Sign in | LinguaWave</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <script src="js/auth.js" defer></script>
+</head>
+
+<body class="auth-page">
+    <div class="auth-tools" aria-label="Display preferences">
+        <button class="auth-tool" type="button" data-theme-toggle aria-label="Switch to dark mode" aria-pressed="false"
+            title="Switch theme"><i class="fa-solid fa-moon" data-theme-icon aria-hidden="true"></i></button>
+        <button class="auth-tool" type="button" data-rtl-toggle aria-label="Switch to right-to-left layout"
+            aria-pressed="false" title="Switch text direction"><i class="fa-solid fa-arrow-right-arrow-left" aria-hidden="true"></i></button>
+    </div>
+    <main class="auth-main">
+        <section class="auth-card auth-card-login" aria-labelledby="authTitle">
+            <a class="auth-brand" href="index.html" aria-label="LinguaWave home"><img src="images/logo.png"
+                    alt="LinguaWave"></a>
+            <div class="auth-intro"><span class="auth-eyebrow">Welcome back</span>
+                <h1 id="authTitle">Sign in to your account</h1>
+                <p>Manage your interpretation equipment and upcoming events.</p>
+            </div>
+            <form class="auth-form" id="loginForm" novalidate>
+                <div class="auth-field"><label for="loginEmail">Email address</label>
+                    <div class="auth-input-wrap"><svg class="auth-field-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <rect x="3" y="5" width="18" height="14" rx="2" />
+                            <path d="m4 7 8 6 8-6" />
+                        </svg><input id="loginEmail" name="email" type="email" autocomplete="email"
+                            placeholder="you@company.com" required></div>
+                </div>
+                <div class="auth-field">
+                    <div class="auth-label-row"><label for="loginPassword">Password</label></div>
+                    <div class="auth-input-wrap"><svg class="auth-field-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <rect x="4" y="10" width="16" height="11" rx="2" />
+                            <path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3" />
+                        </svg><input id="loginPassword" name="password" type="password" autocomplete="current-password"
+                            placeholder="Enter your password" required><button class="auth-password-toggle"
+                            type="button" data-password-toggle="loginPassword" aria-label="Show password"
+                            aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg></button></div>
+                </div>
+                <div class="auth-remember-row"><label class="auth-check"><input type="checkbox" name="remember"><span
+                            class="auth-check-box" aria-hidden="true"></span><span>Remember me</span></label><a
+                        class="auth-text-link" href="#forgot" data-forgot-password>Forgot password?</a></div>
+                <button class="auth-submit" type="submit"><span>Sign in</span><svg viewBox="0 0 24 24"
+                        aria-hidden="true">
+                        <path d="M5 12h14m-6-6 6 6-6 6" />
+                    </svg></button>
+                <p class="auth-status" id="loginStatus" role="status" aria-live="polite"></p>
+            </form>
+            <div class="auth-divider"><span>Or continue with</span></div>
+            <div class="auth-socials" aria-label="Social sign in options">
+                <button class="auth-social-btn" type="button" data-social="Google"
+                    aria-label="Continue with Google"><svg viewBox="0 0 48 48" aria-hidden="true">
+                        <path fill="#4285F4"
+                            d="M43.6 24.5c0-1.4-.1-2.8-.4-4.1H24v7.8h11a9.4 9.4 0 0 1-4.1 6.2v5h6.7c3.9-3.6 6-8.8 6-14.9Z" />
+                        <path fill="#34A853"
+                            d="M24 44c5.5 0 10.2-1.8 13.6-4.8l-6.7-5c-1.8 1.2-4.1 2-6.9 2-5.3 0-9.8-3.6-11.4-8.4H5.7v5.2A20 20 0 0 0 24 44Z" />
+                        <path fill="#FBBC05" d="M12.6 27.8a12 12 0 0 1 0-7.6V15H5.7a20 20 0 0 0 0 18l6.9-5.2Z" />
+                        <path fill="#EA4335"
+                            d="M24 12c3 0 5.7 1 7.8 3.1l5.9-5.9C34.2 5.8 29.5 4 24 4A20 20 0 0 0 5.7 15l6.9 5.2C14.2 15.6 18.7 12 24 12Z" />
+                    </svg><span>Google</span></button>
+                <button class="auth-social-btn" type="button" data-social="Facebook"
+                    aria-label="Continue with Facebook"><svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill="#1877F2"
+                            d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7.1V12h3V9.3c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9V12h3.4l-.5 3.5h-2.9v8.4A12 12 0 0 0 24 12Z" />
+                    </svg><span>Facebook</span></button>
+                <button class="auth-social-btn" type="button" data-social="Apple" aria-label="Continue with Apple"><svg
+                        viewBox="0 0 24 24" aria-hidden="true">
+                        <path class="auth-apple-mark"
+                            d="M16.7 12.8c0-2.1 1.7-3.1 1.8-3.2a4 4 0 0 0-3.1-1.7c-1.3-.1-2.6.8-3.3.8-.7 0-1.8-.8-2.9-.8a4.3 4.3 0 0 0-3.6 2.2c-1.5 2.6-.4 6.5 1.1 8.6.7 1 1.5 2.1 2.6 2 1-.1 1.4-.7 2.7-.7s1.7.7 2.8.7 1.9-1 2.5-2c.8-1.1 1.1-2.2 1.1-2.3a3.6 3.6 0 0 1-1.7-3.6ZM14.5 6.5a3.8 3.8 0 0 0 .9-2.7 3.9 3.9 0 0 0-2.5 1.3 3.6 3.6 0 0 0-.9 2.6 3.3 3.3 0 0 0 2.5-1.2Z" />
+                    </svg><span>Apple</span></button>
+            </div>
+            <p class="auth-switch">Don't have an account? <a class="auth-text-link" href="register.html">Create
+                    account</a></p>
+
+        </section>
+    </main>
+</body>
+
+</html>

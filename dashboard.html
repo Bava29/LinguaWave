@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="LinguaWave client workspace for managing interpretation equipment and event services.">
+    <title>LinguaWave</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="js/dashboard.js" defer></script>
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar" aria-label="Workspace sidebar">
+            <a class="brand" href="index.html" aria-label="LinguaWave dashboard"><img src="images/logo.png"
+                    alt="LinguaWave"></a>
+            <button class="sidebar-close" id="sidebarClose" type="button" aria-label="Close navigation"><i
+                    class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+            <div class="workspace-label">Workspace</div>
+            <nav class="side-nav" aria-label="Dashboard navigation">
+                <a class="nav-link active" href="dashboard.html" data-page="Dashboard Overview"><i
+                        class="fa-solid fa-pie-chart" aria-hidden="true"></i><span>Dashboard Overview</span></a>
+                <a class="nav-link" href="d2.html" data-page="Event Bookings"><i class="fa-regular fa-calendar-check"
+                        aria-hidden="true"></i><span>Event Bookings</span></a>
+                <a class="nav-link" href="d3.html" data-page="Equipment & Language Channels"><i
+                        class="fa-solid fa-headphones" aria-hidden="true"></i><span>Equipment & Channels</span></a>
+                <a class="nav-link" href="d4.html" data-page="Delivery & Setup Schedule"><i
+                        class="fa-solid fa-truck-fast" aria-hidden="true"></i><span>Delivery &amp; Schedule</span></a>
+                <a class="nav-link" href="d5.html" data-page="Payments & Invoices"><i class="fa-regular fa-credit-card"
+                        aria-hidden="true"></i><span>Payments</span></a>
+                <a class="nav-link" href="d6.html" data-page="Support & Service Requests"><i
+                        class="fa-regular fa-life-ring" aria-hidden="true"></i><span>Support</span></a>
+            </nav>
+            <div class="sidebar-bottom">
+
+                <button class="logout-button" type="button" data-logout><i class="fa-solid fa-arrow-right-from-bracket"
+                        aria-hidden="true"></i><span>Logout</span></button>
+            </div>
+        </aside>
+        <div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+        <main class="main-area">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation"
+                        aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button>
+                    <div class="page-heading"><span class="eyebrow">Client workspace</span>
+                        <h1 id="pageTitle">Dashboard</h1>
+                    </div>
+                </div>
+                <div class="topbar-actions">
+                    <div class="popover-wrap" id="notificationsWrap">
+                        <button class="icon-button notification-button" id="notificationToggle" type="button"
+                            aria-label="Notifications, 3 unread" aria-expanded="false"
+                            aria-controls="notificationPanel"><i class="fa-solid fa-bell" aria-hidden="true"></i><span
+                                class="notification-badge">3</span></button>
+                        <section class="popover notification-panel" id="notificationPanel" aria-label="Notifications"
+                            hidden>
+                            <div class="popover-heading">
+                                <div><strong>Notifications</strong><span>3 updates for your workspace</span></div><span
+                                    class="live-label">DEMO</span>
+                            </div>
+                            <a class="notification-item" href="d2.html" data-page="Event Bookings"><span
+                                    class="notice-icon lilac"><i class="fa-regular fa-calendar-check"
+                                        aria-hidden="true"></i></span><span><strong>Upcoming event
+                                        booking</strong><small>Your Geneva Summit is coming up in 5 days.</small><em>2
+                                        hours ago</em></span></a>
+                            <a class="notification-item" href="d4.html" data-page="Delivery & Setup Schedule"><span
+                                    class="notice-icon plum"><i class="fa-solid fa-truck-fast"
+                                        aria-hidden="true"></i></span><span><strong>Delivery &amp; setup
+                                        scheduled</strong><small>Equipment arrival is confirmed for 14
+                                        June.</small><em>Yesterday</em></span></a>
+                            <a class="notification-item" href="d5.html" data-page="Payments & Invoices"><span
+                                    class="notice-icon lilac"><i class="fa-regular fa-file-lines"
+                                        aria-hidden="true"></i></span><span><strong>Invoice
+                                        reminder</strong><small>Invoice LW-2048 is ready for your review.</small><em>2
+                                        days ago</em></span></a>
+                            <div class="demo-note">Sample notifications for this frontend prototype.</div>
+                        </section>
+                    </div>
+                    <button class="icon-button" id="themeToggle" type="button" aria-label="Switch to dark mode"
+                        title="Switch to dark mode"><i class="fa-solid fa-moon" aria-hidden="true"></i></button>
+                    <button class="icon-button direction-button" id="directionToggle" type="button"
+                        aria-label="Switch to right-to-left layout" title="Switch text direction"><i
+                            class="fa-solid fa-arrow-right-arrow-left" aria-hidden="true"></i></button>
+                    <div class="popover-wrap profile-wrap" id="profileWrap">
+                        <button class="profile-button" id="profileToggle" type="button" aria-expanded="false"
+                            aria-controls="profilePanel"><img class="avatar avatar-image" alt="Demo client avatar"
+                                src="images/client-profile.jpg"><span class="profile-copy"><strong>Rakesh
+                                    M</strong><small>Event Client</small></span></button>
+                        <section class="popover profile-panel" id="profilePanel" aria-label="Client account menu"
+                            hidden>
+                            <div class="profile-menu-heading"><img class="avatar avatar-image" alt=""
+                                    src="images/client-profile.jpg"><span><strong>Demo Client</strong><small>Event
+                                        Client - Demo account</small></span></div>
+
+                        </section>
+                    </div>
+                </div>
+            </header>
+
+
+            <!-- Dashboard Content -->
+            <div class="content-scroll">
+
+                <!-- Welcome -->
+                <section class="welcome-section">
+                    <div class="welcome-copy">
+                        <span class="welcome-kicker">
+                            <i class="fa-solid fa-globe"></i>
+                            YOUR EVENT WORKSPACE
+                        </span>
+                        <h2>Welcome back, Rakesh!</h2>
+                        <p>Keep track of your interpretation equipment, upcoming events and payments from one place.</p>
+                    </div>
+
+                    <a href="d2.html" class="primary-button">
+                        <i class="fa-solid fa-plus"></i>
+                        New Booking
+                    </a>
+                </section>
+
+                <!-- SECTION 1: Booking Overview -->
+                <section class="dash-section" id="bookingOverview">
+                    <div class="dash-section-heading">
+                        <div>
+                            <span class="dash-section-kicker">AT A GLANCE</span>
+                            <h2>Booking Overview</h2>
+                            <p>A quick look at your current event arrangements.</p>
+                        </div>
+                        <a href="d2.html" class="dash-text-link">
+                            All bookings <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <div class="booking-stats-grid">
+
+                        <article class="booking-stat-card">
+                            <div class="booking-stat-top">
+                                <span class="booking-stat-icon">
+                                    <i class="fa-regular fa-calendar-check"></i>
+                                </span>
+                                <span class="booking-stat-label">In progress</span>
+                            </div>
+                            <strong class="booking-stat-number">02</strong>
+                            <h3>Active Bookings</h3>
+                            <p>Events being prepared or confirmed</p>
+                        </article>
+
+                        <article class="booking-stat-card">
+                            <div class="booking-stat-top">
+                                <span class="booking-stat-icon">
+                                    <i class="fa-solid fa-earth-americas"></i>
+                                </span>
+                                <span class="booking-stat-label">Next event</span>
+                            </div>
+                            <strong class="booking-stat-number">05</strong>
+                            <h3>Days to Go</h3>
+                            <p>Until your next scheduled event</p>
+                        </article>
+
+                        <article class="booking-stat-card">
+                            <div class="booking-stat-top">
+                                <span class="booking-stat-icon">
+                                    <i class="fa-solid fa-headphones"></i>
+                                </span>
+                                <span class="booking-stat-label">Equipment</span>
+                            </div>
+                            <strong class="booking-stat-number">Ready</strong>
+                            <h3>Equipment Status</h3>
+                            <p>Review your equipment arrangements</p>
+                        </article>
+
+                        <article class="booking-stat-card">
+                            <div class="booking-stat-top">
+                                <span class="booking-stat-icon">
+                                    <i class="fa-regular fa-credit-card"></i>
+                                </span>
+                                <span class="booking-stat-label">Action needed</span>
+                            </div>
+                            <strong class="booking-stat-number">01</strong>
+                            <h3>Pending Invoice</h3>
+                            <p>Invoice awaiting your review</p>
+                        </article>
+
+                    </div>
+                    <p class="dash-demo-note">
+                        <i class="fa-solid fa-circle-info"></i>
+                        Sample dashboard figures for the frontend prototype.
+                    </p>
+                </section>
+
+                <!-- SECTION 2: Upcoming Events -->
+                <section class="dash-section" id="upcomingEvents">
+                    <div class="dash-section-heading">
+                        <div>
+                            <span class="dash-section-kicker">YOUR SCHEDULE</span>
+                            <h2>Upcoming Events</h2>
+                            <p>Check event dates and interpretation arrangements.</p>
+                        </div>
+                        <a href="d2.html" class="dash-text-link">
+                            View bookings <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <div class="dash-content-card">
+                        <article class="event-row">
+                            <div class="event-date">
+                                <span>JUN</span>
+                                <strong>14</strong>
+                                <small>2027</small>
+                            </div>
+
+                            <div class="event-info">
+                                <span class="event-category">INTERNATIONAL CONFERENCE</span>
+                                <h3>Geneva Global Summit</h3>
+                                <p>
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    Geneva, Switzerland
+                                </p>
+                                <div class="event-tags">
+                                    <span><i class="fa-solid fa-language"></i> 3 language channels</span>
+                                    <span><i class="fa-solid fa-headphones"></i> 120 receivers</span>
+                                </div>
+                            </div>
+
+                            <div class="event-status-area">
+                                <span class="status-pill status-confirmed">
+                                    <span></span> Confirmed
+                                </span>
+                                <a href="d2.html" class="small-outline-button">View Details</a>
+                            </div>
+                        </article>
+
+                        <article class="event-row">
+                            <div class="event-date">
+                                <span>JUN</span>
+                                <strong>22</strong>
+                                <small>2027</small>
+                            </div>
+
+                            <div class="event-info">
+                                <span class="event-category">BUSINESS MEETING</span>
+                                <h3>European Partner Forum</h3>
+                                <p>
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    Paris, France
+                                </p>
+                                <div class="event-tags">
+                                    <span><i class="fa-solid fa-language"></i> 2 language channels</span>
+                                    <span><i class="fa-solid fa-headphones"></i> 60 receivers</span>
+                                </div>
+                            </div>
+
+                            <div class="event-status-area">
+                                <span class="status-pill status-pending">
+                                    <span></span> In preparation
+                                </span>
+                                <a href="d2.html" class="small-outline-button">View Details</a>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- SECTION 3: Equipment & Delivery -->
+                <section class="dash-section" id="equipmentDelivery">
+                    <div class="dash-section-heading">
+                        <div>
+                            <span class="dash-section-kicker">EVENT READINESS</span>
+                            <h2>Equipment &amp; Delivery</h2>
+                            <p>Review your equipment allocation and setup schedule.</p>
+                        </div>
+                        <a href="d4.html" class="dash-text-link">
+                            Delivery details <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <div class="equipment-delivery-grid">
+
+                        <article class="dash-feature-card">
+                            <div class="feature-card-heading">
+                                <span class="feature-icon">
+                                    <i class="fa-solid fa-headphones-simple"></i>
+                                </span>
+                                <span class="status-pill status-confirmed">
+                                    <span></span> Allocated
+                                </span>
+                            </div>
+
+                            <h3>Interpretation Equipment</h3>
+                            <p>Equipment planned for your next conference.</p>
+
+                            <div class="equipment-count-row">
+                                <div>
+                                    <strong>120</strong>
+                                    <span>Receivers</span>
+                                </div>
+                                <div>
+                                    <strong>03</strong>
+                                    <span>Languages</span>
+                                </div>
+                                <div>
+                                    <strong>01</strong>
+                                    <span>Booth setup</span>
+                                </div>
+                            </div>
+
+                            <a href="d3.html" class="dash-card-link">
+                                Review equipment <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </article>
+
+                        <article class="dash-feature-card">
+                            <div class="feature-card-heading">
+                                <span class="feature-icon">
+                                    <i class="fa-solid fa-truck-fast"></i>
+                                </span>
+                                <span class="status-pill status-pending">
+                                    <span></span> Scheduled
+                                </span>
+                            </div>
+
+                            <h3>Delivery &amp; Setup</h3>
+                            <p>Keep your venue preparation on schedule.</p>
+
+                            <div class="delivery-timeline">
+                                <div class="timeline-step completed">
+                                    <span class="timeline-dot"></span>
+                                    <div>
+                                        <strong>Booking confirmed</strong>
+                                        <small>Equipment requirements recorded</small>
+                                    </div>
+                                </div>
+
+                                <div class="timeline-step current">
+                                    <span class="timeline-dot"></span>
+                                    <div>
+                                        <strong>Delivery &amp; installation</strong>
+                                        <small>13 June 2027 · 10:00 AM</small>
+                                    </div>
+                                </div>
+
+                                <div class="timeline-step">
+                                    <span class="timeline-dot"></span>
+                                    <div>
+                                        <strong>Final equipment check</strong>
+                                        <small>Before the event begins</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="d4.html" class="dash-card-link">
+                                View schedule <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </article>
+
+                    </div>
+                    <p class="dash-demo-note">
+                        <i class="fa-solid fa-circle-info"></i>
+                        Equipment quantities and delivery milestones are illustrative examples.
+                    </p>
+                </section>
+
+                <!-- SECTION 4: Payments & Invoices -->
+
+                <!-- PAYMENTS & INVOICES SECTION -->
+                <section class="lw-billing-section" id="paymentsInvoices">
+
+                    <div class="lw-billing-heading">
+                        <div class="lw-billing-heading-copy">
+                            <span class="lw-billing-eyebrow">BILLING CENTRE</span>
+                            <h2>Payments &amp; Invoices</h2>
+                            <p>Review invoice amounts, due dates and payment status.</p>
+                        </div>
+
+                        <a href="d5.html" class="lw-billing-all-link">
+                            All invoices
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <article class="lw-invoice-panel">
+
+                        <!-- Invoice identity -->
+                        <div class="lw-invoice-identity">
+                            <span class="lw-invoice-file-icon">
+                                <i class="fa-regular fa-file-lines"></i>
+                            </span>
+
+                            <div class="lw-invoice-identity-copy">
+                                <span class="lw-invoice-label">Pending invoice</span>
+                                <h3>LW-2048</h3>
+                                <p>Geneva Global Summit</p>
+                            </div>
+                        </div>
+
+                        <!-- Amount and status -->
+                        <div class="lw-invoice-payment">
+                            <span class="lw-invoice-label">Amount due</span>
+                            <strong class="lw-invoice-total">€1,250.00</strong>
+
+                            <span class="lw-invoice-status">
+                                <span class="lw-invoice-status-dot"></span>
+                                Pending
+                            </span>
+                        </div>
+
+                        <!-- Invoice information -->
+                        <div class="lw-invoice-information">
+
+                            <div class="lw-invoice-info-item">
+                                <span class="lw-invoice-label">Invoice date</span>
+                                <strong>01 June 2027</strong>
+                            </div>
+
+                            <div class="lw-invoice-info-item">
+                                <span class="lw-invoice-label">Payment due</span>
+                                <strong>10 June 2027</strong>
+                            </div>
+
+                            <div class="lw-invoice-info-item">
+                                <span class="lw-invoice-label">Booking reference</span>
+                                <strong>LW-GS-1042</strong>
+                            </div>
+
+                        </div>
+
+                        <!-- Invoice action -->
+                        <div class="lw-invoice-action-area">
+                            <p class="lw-invoice-security-note">
+                                <i class="fa-solid fa-shield-halved"></i>
+                                <span>Review invoice details before making a payment.</span>
+                            </p>
+
+                            <a href="d5.html" class="lw-invoice-view-button">
+                                View Invoice
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+
+                    </article>
+
+                    <p class="lw-invoice-demo-note">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span>Invoice numbers, amounts and dates are demo data. No real payment is processed.</span>
+                    </p>
+
+                </section>
+
+            </div>
+
+        </main>
+    </div>
+    <div class="modal-backdrop" id="logoutModal" hidden>
+        <section class="confirm-dialog" role="dialog" aria-modal="true" aria-labelledby="logoutTitle"
+            aria-describedby="logoutDescription" tabindex="-1">
+            <span class="logout-icon-wrap"><i class="fa-solid fa-arrow-right-from-bracket"
+                    aria-hidden="true"></i></span>
+            <h2 id="logoutTitle">Confirm Logout</h2>
+            <p id="logoutDescription">Are you sure you want to log out of your LinguaWave account?</p>
+            <div class="dialog-actions"><button class="secondary-button" id="stayButton" type="button">No,
+                    Stay</button><button class="confirm-logout-button" id="confirmLogoutButton" type="button"><i
+                        class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i> Yes, Logout</button></div>
+        </section>
+    </div>
+</body>
+
+</html>
