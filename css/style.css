@@ -28264,3 +28264,96 @@ html.dark-mode .lw-menu-toggle.is-open span {
         margin-left: 4px !important;
     }
 }
+
+/* Hero Support Card - Move Slightly Right */
+.lw-hero .lw-support-card {
+    left: 0 !important;
+    right: auto !important;
+    transform: translateX(30px) !important;
+}
+
+/* HOME 2 - RTL Statistics Divider Spacing */
+html[dir="rtl"] .lw2iv-stats>div {
+    border-right: none !important;
+    border-left: 1px solid #DCD0E9 !important;
+    padding-left: 28px !important;
+    padding-right: 20px !important;
+}
+
+html[dir="rtl"] .lw2iv-stats>div:last-child {
+    border-left: none !important;
+}
+
+
+/* FINAL FIX - CONTACT FORM RTL DROPDOWNS IN DARK MODE */
+
+html.dark-mode[dir="rtl"] .lwc-contact-form select,
+html.dark-mode[dir="rtl"] .lwc-contact-form .lwc-field select,
+html.dark-mode[dir="rtl"] .lwc-contact-form #lwcEventType,
+html.dark-mode[dir="rtl"] .lwc-contact-form #lwcAudience,
+html.dark-mode[dir="rtl"] .lwc-contact-form #lwcService {
+
+    direction: rtl !important;
+    text-align: right !important;
+    text-align-last: right !important;
+
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+
+    /* Text spacing */
+    padding-right: 16px !important;
+    padding-left: 55px !important;
+
+    /* Arrow fixed on LEFT */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23D9C9E5' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") !important;
+
+    background-repeat: no-repeat !important;
+    background-position: left 16px center !important;
+    background-size: 14px 14px !important;
+
+    color: #F7F2FA !important;
+}
+
+/* Center the final CTA copy and assurance point on iPad Mini widths. */
+@media screen and (min-width: 600px) and (max-width: 820px) {
+    .lw2fc-content {
+        text-align: center;
+    }
+
+    .lw2fc-content>p {
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+    }
+
+    .lw2fc-assurance {
+        justify-content: center;
+        width: fit-content;
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+    }
+}
+
+
+
+/* Mobile - Industries diagram right-side spacing */
+@media screen and (max-width: 599px) {
+
+    .lw2-industries-visual .lw2iv-visual {
+        width: calc(100% - 24px) !important;
+        max-width: 390px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        overflow: visible !important;
+    }
+
+    .lw2-industries-visual .lw2iv-education {
+        right: 2% !important;
+    }
+
+    .lw2-industries-visual .lw2iv-education .lw2iv-label {
+        right: 0 !important;
+    }
+}
