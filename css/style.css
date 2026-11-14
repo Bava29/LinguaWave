@@ -28357,3 +28357,40 @@ html.dark-mode[dir="rtl"] .lwc-contact-form #lwcService {
         right: 0 !important;
     }
 }
+
+/* Equipment Cards - Increase Image Height Only */
+
+.lwe-categories .lwe-category-image {
+    height: 380px !important;
+    min-height: 380px !important;
+}
+
+.lwe-categories .lwe-category-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    padding: 0 !important;
+}
+
+/* iPad Mini portrait: center the Home 2 FAQ intro text */
+@media screen and (min-width: 768px) and (max-width: 768px) {
+    .lw2-faq-intro {
+        text-align: center;
+    }
+
+    .lw2-faq-eyebrow {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .lw2-faq-intro > p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .lw2-faq-contact {
+        text-align: left;
+    }
+}
+
